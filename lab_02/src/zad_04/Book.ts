@@ -1,6 +1,6 @@
 import { BookStatus } from "./enums/BookStatus";
 
-class Book {
+export class Book {
     private title: string;
     private author: string;
     private year: number;
@@ -41,7 +41,7 @@ class Book {
     }
 
 
-    public getBookStatus(): BookStatus{
+    public getBookStatus(): BookStatus {
         return this.bookStatus 
 
     }
