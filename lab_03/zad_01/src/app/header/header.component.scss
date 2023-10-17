@@ -1,0 +1,44 @@
+$primary-color: #3498db;
+$header-background: #333;
+$header-text-color: #fff;
+
+
+
+
+
+  nav {
+    background-color: $header-background;
+    color: $header-text-color;
+    padding: 20px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo {
+      a {
+        text-decoration: none;
+        color: $header-text-color;
+        font-size: 24px;
+        font-weight: bold;
+      }
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 20px;
+
+      li {
+        a {
+          text-decoration: none;
+          color: $header-text-color;
+          &:hover {
+            color: $primary-color;
+          }
+        }
+      }
+    }
+  }
+
