@@ -1,7 +1,7 @@
 import { Gender } from "../enums/custom-enums";
 import { Address } from "../types/address";
 
-class Person {
+export class Person {
     private name: string;
     private surname: string;
     private age: number;
