@@ -7,7 +7,10 @@ import { interval } from 'rxjs';
   styleUrls: ['./counter.component.sass']
 })
 export class CounterComponent {
-public counter = 0
+  public counter;
+  constructor() {
+    this.counter = 0; 
+  }
 public interval: any;
   increment(){
    this.counter++;
