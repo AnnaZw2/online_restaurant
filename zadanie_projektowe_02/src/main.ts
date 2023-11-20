@@ -9,30 +9,3 @@ platformBrowserDynamic()
   .bootstrapModule(AppModule)
   .catch((err) => console.error(err));
 
-let examplePerson: Person = {
-  id: generateUUID(),
-  name: 'John',
-  surname: 'Doe',
-  age: 25,
-  gender: Gender.MALE,
-  employed: true,
-  studentStatus: false,
-  address: {
-    street: '123 Main St',
-    apartmentNumber: 'Apt 4',
-    zipCode: '12345',
-    city: 'Example City',
-    country: 'Example Country',
-  },
-  lastTimeSeen: new Date(),
-  contact: {
-    email: 'john.doe@example.com',
-    phone: '123-456-7890',
-  },
-};
-
-let personService = new PersonService();
-personService.create(examplePerson);
-personService.create(examplePerson);
-personService.create(examplePerson);
-console.log(personService.read());

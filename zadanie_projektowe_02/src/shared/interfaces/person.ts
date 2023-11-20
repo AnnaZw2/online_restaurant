@@ -8,14 +8,10 @@ export interface Person {
   surname: string;
   age: number;
   gender: Gender;
-  employed: boolean;
-  studentStatus: boolean;
-  address: Address;
+  city: string;
   lastTimeSeen: Date;
-  contact: {
-    email: string;
-    phone: string;
-  };
+  stillMissing: boolean | undefined;
+
 }
 
 export function generateUUID(): string {
