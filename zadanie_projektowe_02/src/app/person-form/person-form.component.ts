@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Gender } from 'src/shared/enums/custom-enums';
 import { Person, generateUUID } from 'src/shared/interfaces/person';
+import { nonInitializedPerson } from 'src/shared/utils/nonInitPerson';
 
 @Component({
   selector: 'app-person-form',
@@ -8,19 +9,21 @@ import { Person, generateUUID } from 'src/shared/interfaces/person';
   styleUrls: ['./person-form.component.css']
 })
 export class PersonFormComponent {
- 
+ @Output()  addPerson = new EventEmitter<Person>();
+person:Person = nonInitializedPerson
+  
 
-  person:Person = {
-    id:  generateUUID(),
-    name: '',
-    surname: '',
-    age: 0,
-    gender: Gender.NOT_SET, 
-    city: '',
-    lastTimeSeen: new Date(),
-    stillMissing: undefined,
-  }
   onSubmit() {
-    console.log(this.person);
+    this.addPerson.emit(this.person);
+    this.person = {  // Clear the form after submission
+      id: generateUUID(),
+      name: '',
+      surname: '',
+      age: 0,
+      gender: Gender.NOT_SET,
+      city: '',
+      lastTimeSeen: new Date(),
+      stillMissing: false,
+    };
   }
 }

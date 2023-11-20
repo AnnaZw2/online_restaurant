@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Person } from 'src/shared/interfaces/person';
+import { nonInitializedPerson } from 'src/shared/utils/nonInitPerson';
 
 @Component({
   selector: 'app-person-details',
@@ -6,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./person-details.component.css']
 })
 export class PersonDetailsComponent {
+ @Input() person:Person = nonInitializedPerson
 
 }

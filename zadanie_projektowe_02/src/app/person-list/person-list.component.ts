@@ -1,23 +1,26 @@
-import { Component } from '@angular/core';
-import { Observable, delay, of,Subscription } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Observable, delay, of, Subscription } from 'rxjs';
 import { initialPeople } from 'src/shared/data/data';
 import { Person } from 'src/shared/interfaces/person';
+import { nonInitializedPerson } from 'src/shared/utils/nonInitPerson';
 @Component({
   selector: 'app-person-list',
   templateUrl: './person-list.component.html',
-  styleUrls: ['./person-list.component.css']
+  styleUrls: ['./person-list.component.css'],
 })
-export class PersonListComponent {
-  private arrayOfPeople: Person[] = [];
+export class PersonListComponent implements OnDestroy, OnInit {
+  arrayOfPeople: Person[] = [];
   private dataSubscription: Subscription | undefined;
 
+  handleAddPerson(person: Person): void {
+    this.arrayOfPeople.unshift(person);
+  }
   ngOnInit(): void {
     // Simulate loading initial data with a delay
 
-    
-    this.dataSubscription =  this.loadInitialData().subscribe(data => {
+    this.dataSubscription = this.loadInitialData().subscribe((data) => {
       this.arrayOfPeople = data;
-      console.log(data)
+      console.log(data);
     });
     console.log(this.arrayOfPeople);
   }
@@ -26,17 +29,13 @@ export class PersonListComponent {
     return of(initialPeople).pipe(delay(2000));
   }
 
-
-  
   ngOnDestroy(): void {
-  console.log("ngOnDestroy");
-  
+    console.log('ngOnDestroy');
+
     if (this.dataSubscription) {
-      console.log("Unsubscribing from dataSubscription");
-      
+      console.log('Unsubscribing from dataSubscription');
+
       this.dataSubscription.unsubscribe();
     }
   }
-  
-
 }

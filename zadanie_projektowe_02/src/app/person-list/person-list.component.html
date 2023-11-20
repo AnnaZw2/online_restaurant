@@ -1,2 +1,10 @@
 <h5>Police database: missing people cases</h5>
-<app-person-form></app-person-form>
+<app-person-form (addPerson)="handleAddPerson($event)"></app-person-form>
+<div class="container">
+    <ul class="list-unstyled pl-2">
+        <li *ngFor="let person of arrayOfPeople">
+            <app-person-details  [person]="person"></app-person-details>
+        </li>
+    </ul>
+</div>
+

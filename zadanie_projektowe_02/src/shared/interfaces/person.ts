@@ -1,5 +1,4 @@
 import { Gender } from '../enums/custom-enums';
-import { Address } from './address';
 import { v4 as uuidv4 } from 'uuid';
 
 export interface Person {
