@@ -3,7 +3,7 @@
 <p class="mb-2 mt-2">Name: {{person.name}}</p>
 <p class="mb-2 mt-2">Surname: {{person.surname}}</p>
 <p class="mb-2 mt-2">Age: {{person.age}} </p>
-<p class="mb-2 mt-2">Gender: {{person.gender}}</p>
+<p class="mb-2 mt-2">Gender: {{ getGenderString(person.gender) }}</p>
 <p class="mb-2 mt-2">City: {{person.city}}</p>
-<p class="mb-2 mt-2">Last time seen: {{person.lastTimeSeen}}</p>
+<p class="mb-2 mt-2">Last time seen: {{person.lastTimeSeen |  date:'medium' }}</p>
 </div>

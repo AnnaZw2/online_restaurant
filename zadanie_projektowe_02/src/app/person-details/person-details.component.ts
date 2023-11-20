@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Gender } from 'src/shared/enums/custom-enums';
 import { Person } from 'src/shared/interfaces/person';
 import { nonInitializedPerson } from 'src/shared/utils/nonInitPerson';
 
@@ -9,5 +10,10 @@ import { nonInitializedPerson } from 'src/shared/utils/nonInitPerson';
 })
 export class PersonDetailsComponent {
  @Input() person:Person = nonInitializedPerson
+
+ getGenderString(gender: Gender): string {
+  return gender === Gender.MALE ? 'Male' : 'Female';
+}
+
 
 }
