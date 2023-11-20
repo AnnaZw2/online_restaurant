@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Form } from '@angular/forms';
 import { Gender } from 'src/shared/enums/custom-enums';
 import { Person, generateUUID } from 'src/shared/interfaces/person';
 
@@ -12,7 +11,7 @@ export class PersonFormComponent {
  
 
   person:Person = {
-    id: '',
+    id:  generateUUID(),
     name: '',
     surname: '',
     age: 0,
@@ -20,5 +19,8 @@ export class PersonFormComponent {
     city: '',
     lastTimeSeen: new Date(),
     stillMissing: undefined,
+  }
+  onSubmit() {
+    console.log(this.person);
   }
 }
