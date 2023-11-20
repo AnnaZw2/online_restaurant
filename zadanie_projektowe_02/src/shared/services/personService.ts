@@ -1,4 +1,4 @@
-import { Person } from "../interfaces/person";
+import { Person } from '../interfaces/person';
 
 export class PersonService {
   private arrayOfPeople: Person[] = [];
@@ -7,12 +7,11 @@ export class PersonService {
     this.arrayOfPeople.push(person);
   }
 
-
   public read(): Person[] {
     return this.arrayOfPeople;
   }
 
-  public update(id: number, updatedPerson: Person): void {
+  public update(id: string, updatedPerson: Person): void {
     const index: number = this.arrayOfPeople.findIndex(
       (person: Person) => person.id === id
     );
@@ -21,9 +20,9 @@ export class PersonService {
     }
   }
 
-  public delete(id: number): void {
+  public delete(id: string): void {
     this.arrayOfPeople = this.arrayOfPeople.filter(
-      (person: Person) => person.id!== id
+      (person: Person) => person.id !== id
     );
   }
 }
