@@ -9,9 +9,20 @@ export class ModalComponent {
   @Input() modalTitle = 'Modal Title';
   @Input() modalBody = 'Modal body text goes here.';
   @Output() saveChanges = new EventEmitter<void>();
-  @Output() closeModal = new EventEmitter<void>();
 
 
+  openModal(): void {
+    const modelDiv =document.getElementById('myModal')
+    if(modelDiv) modelDiv.style.display = 'block';
+  
+  }
+  
+  
+  closeModal(): void {
+    const modelDiv =document.getElementById('myModal')
+    if(modelDiv) modelDiv.style.display = 'none';
+  
+  }
 
 
 }

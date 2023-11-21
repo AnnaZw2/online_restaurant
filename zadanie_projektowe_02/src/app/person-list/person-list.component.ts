@@ -14,9 +14,12 @@ export class PersonListComponent implements OnDestroy, OnInit {
   showOnlyMissing = false;
 
 
-  
+
   handleAddPerson(person: Person): void {
     this.arrayOfPeople.unshift(person);
+  }
+  handleDeletePerson(person: Person): void {
+this.arrayOfPeople = this.arrayOfPeople.filter(p => p.id !== person.id)
   }
   toggleShowOnlyMissing() {
     this.showOnlyMissing = !this.showOnlyMissing;

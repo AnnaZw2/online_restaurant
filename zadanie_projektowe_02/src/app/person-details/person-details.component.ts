@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Gender } from 'src/shared/enums/custom-enums';
 import { Person } from 'src/shared/interfaces/person';
 import { nonInitializedPerson } from 'src/shared/utils/nonInitPerson';
@@ -31,6 +31,11 @@ closeModal(): void {
   const modelDiv =document.getElementById('myModal')
   if(modelDiv) modelDiv.style.display = 'none';
 
+}
+
+@Output() deletePerson = new EventEmitter<Person>();
+deleteRecord(person:Person) {
+  this.deletePerson.emit(person );
 }
 
 
