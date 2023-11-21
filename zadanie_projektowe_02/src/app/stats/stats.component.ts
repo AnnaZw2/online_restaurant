@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, DoCheck, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Person } from 'src/shared/interfaces/person';
 
 @Component({
@@ -6,16 +6,22 @@ import { Person } from 'src/shared/interfaces/person';
   templateUrl: './stats.component.html',
   styleUrls: ['./stats.component.css']
 })
-export class StatsComponent implements OnChanges {
+export class StatsComponent implements DoCheck {
 @Input() arrayOfPeople: Person[] = [];
+missingPeople: Person[] = [];
+foundPeople: Person[] = [];
 
+ngDoCheck(): void {
+  console.log('ngOnChanges');
 
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log('ngOnChanges');
-    console.log(changes);
-    this.arrayOfPeople = changes['arrayOfPeople'].currentValue;
-  
-    
-  }
+  this.updateFilteredArrays();
+}
+
+private updateFilteredArrays(): void {
+  console.log('ngOnChanges');
+
+  this.missingPeople = this.arrayOfPeople.filter((person: Person) => person.stillMissing);
+  this.foundPeople = this.arrayOfPeople.filter((person: Person) => !person.stillMissing);
+}
 
 }
