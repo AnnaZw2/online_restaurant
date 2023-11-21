@@ -1,0 +1,9 @@
+<div class="overlay" [ngClass]="{ 'show-overlay': showModal }"></div>
+
+<div class="custom-modal" [ngClass]="{ 'show-modal': showModal }">
+  <button class="close-button" (click)="closeModal()">X</button>
+  <div>{{ title }}</div>
+  <div>{{ body }}</div>
+  <button class="cancel-button" (click)="closeModal()">Close</button>
+  <button class="confirm-button" (click)="confirmAction()">Confirm</button>
+</div>

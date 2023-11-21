@@ -10,6 +10,7 @@ import { ShowMissingPeoplePipe } from './pipes/show-missing-people.pipe';
 import { StatsComponent } from './stats/stats.component';
 import { CountElementsInArrayPipe } from './pipes/count-elements-in-array.pipe';
 import { ShowFoundPipe } from './pipes/show-found.pipe';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ShowFoundPipe } from './pipes/show-found.pipe';
     StatsComponent,
     CountElementsInArrayPipe,
     ShowFoundPipe,
+    ModalComponent,
   ],
   imports: [BrowserModule, FormsModule],
   providers: [],
