@@ -8,14 +8,14 @@ import { Person } from 'src/shared/interfaces/person';
 })
 export class StatsComponent implements OnChanges {
 @Input() arrayOfPeople: Person[] = [];
-missingCount = 0;
-foundCount = 0;
+
 
   ngOnChanges(changes: SimpleChanges): void {
     console.log('ngOnChanges');
     console.log(changes);
-    this.missingCount  = changes['arrayOfPeople'].currentValue.filter((p:Person)  => p.stillMissing).length
-    this.foundCount = changes['arrayOfPeople'].currentValue.filter((p:Person)  => !p.stillMissing).length
+    this.arrayOfPeople = changes['arrayOfPeople'].currentValue;
+  
+    
   }
 
 }
