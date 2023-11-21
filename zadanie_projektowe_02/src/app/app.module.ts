@@ -7,7 +7,6 @@ import { PersonListComponent } from './person-list/person-list.component';
 import { PersonDetailsComponent } from './person-details/person-details.component';
 import { PersonFormComponent } from './person-form/person-form.component';
 import { ShowMissingPeoplePipe } from './pipes/show-missing-people.pipe';
-import { ModalComponent } from './modal/modal.component';
 import { StatsComponent } from './stats/stats.component';
 import { CountElementsInArrayPipe } from './pipes/count-elements-in-array.pipe';
 import { ShowFoundPipe } from './pipes/show-found.pipe';
@@ -19,7 +18,6 @@ import { ShowFoundPipe } from './pipes/show-found.pipe';
     PersonDetailsComponent,
     PersonFormComponent,
     ShowMissingPeoplePipe,
-    ModalComponent,
     StatsComponent,
     CountElementsInArrayPipe,
     ShowFoundPipe,
