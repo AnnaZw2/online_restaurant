@@ -5,8 +5,11 @@
         <button *ngIf="showOnlyMissing" class="btn btn-warning" (click)="toggleShowOnlyMissing()">Show All People</button>
         <button *ngIf="!showOnlyMissing" class="btn btn-warning" (click)="toggleShowOnlyMissing()">Show Only Missing People</button>
         <li *ngFor="let person of arrayOfPeople | filterMissingPeople: showOnlyMissing ">
+            
             <app-person-details  [person]="person"></app-person-details>
         </li>
     </ul>
 </div>
+
+
 

@@ -7,6 +7,7 @@ import { PersonListComponent } from './person-list/person-list.component';
 import { PersonDetailsComponent } from './person-details/person-details.component';
 import { PersonFormComponent } from './person-form/person-form.component';
 import { ShowMissingPeoplePipe } from './pipes/show-missing-people.pipe';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { ShowMissingPeoplePipe } from './pipes/show-missing-people.pipe';
     PersonDetailsComponent,
     PersonFormComponent,
     ShowMissingPeoplePipe,
+    ModalComponent,
   ],
   imports: [BrowserModule, FormsModule],
   providers: [],

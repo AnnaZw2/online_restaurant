@@ -13,6 +13,8 @@ export class PersonListComponent implements OnDestroy, OnInit {
   private dataSubscription: Subscription | undefined;
   showOnlyMissing = false;
 
+
+  
   handleAddPerson(person: Person): void {
     this.arrayOfPeople.unshift(person);
   }
