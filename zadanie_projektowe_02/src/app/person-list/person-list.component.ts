@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, delay, of, Subscription } from 'rxjs';
 import { initialPeople } from 'src/shared/data/data';
 import { Person } from 'src/shared/interfaces/person';
-import { nonInitializedPerson } from 'src/shared/utils/nonInitPerson';
+
 @Component({
   selector: 'app-person-list',
   templateUrl: './person-list.component.html',
@@ -11,10 +11,15 @@ import { nonInitializedPerson } from 'src/shared/utils/nonInitPerson';
 export class PersonListComponent implements OnDestroy, OnInit {
   arrayOfPeople: Person[] = [];
   private dataSubscription: Subscription | undefined;
+  showOnlyMissing = false;
 
   handleAddPerson(person: Person): void {
     this.arrayOfPeople.unshift(person);
   }
+  toggleShowOnlyMissing() {
+    this.showOnlyMissing = !this.showOnlyMissing;
+  }
+
   ngOnInit(): void {
     // Simulate loading initial data with a delay
 
