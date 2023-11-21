@@ -19,17 +19,19 @@ export class PersonDetailsComponent {
 
 modalBody = "Are you sure you want to delete this record?"
 modalTitle = "Delete Record"
-isModalOpen = false;
+
 openModal(): void {
   const modelDiv =document.getElementById('myModal')
   if(modelDiv) modelDiv.style.display = 'block';
 
+  
 }
 
 
 closeModal(): void {
   const modelDiv =document.getElementById('myModal')
   if(modelDiv) modelDiv.style.display = 'none';
+
 
 }
 

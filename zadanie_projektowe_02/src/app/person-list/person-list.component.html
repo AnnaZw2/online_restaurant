@@ -1,5 +1,8 @@
 <h5>Police database: missing people cases</h5>
+
 <app-person-form (addPerson)="handleAddPerson($event)"></app-person-form>
+
+<app-stats *ngIf="arrayOfPeople.length!==0" [arrayOfPeople]="arrayOfPeople" class="pl-4"></app-stats>
 <div class="container">
     <ul class="list-unstyled pl-2">
         <button *ngIf="showOnlyMissing" class="btn btn-warning" (click)="toggleShowOnlyMissing()">Show All People</button>

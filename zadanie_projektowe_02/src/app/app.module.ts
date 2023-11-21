@@ -8,6 +8,8 @@ import { PersonDetailsComponent } from './person-details/person-details.componen
 import { PersonFormComponent } from './person-form/person-form.component';
 import { ShowMissingPeoplePipe } from './pipes/show-missing-people.pipe';
 import { ModalComponent } from './modal/modal.component';
+import { StatsComponent } from './stats/stats.component';
+import { CountElementsInArrayPipe } from './pipes/count-elements-in-array.pipe';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { ModalComponent } from './modal/modal.component';
     PersonFormComponent,
     ShowMissingPeoplePipe,
     ModalComponent,
+    StatsComponent,
+    CountElementsInArrayPipe,
   ],
   imports: [BrowserModule, FormsModule],
   providers: [],
