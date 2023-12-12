@@ -8,7 +8,7 @@ export class UsersService {
   readonly localstorageKey = 'users';
   constructor() {}
 
-  getUsers(): User[] | null {
+  getUsers(): User[] {
     const userListString = localStorage.getItem(this.localstorageKey);
     return userListString ? JSON.parse(userListString) : [];
   }
