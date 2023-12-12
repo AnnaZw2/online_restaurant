@@ -1,5 +1,11 @@
 import { Injectable } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormArray,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 @Injectable({
   providedIn: 'root',
@@ -8,10 +14,10 @@ export class FormService {
   constructor(private fb: FormBuilder) {}
 
   createUsersForm(): FormGroup {
-    return this.fb.group({
-      username: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      addresses: this.fb.array([]),
+    return new FormGroup({
+      name: new FormControl('', Validators.required),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      addresses: new FormArray([]),
     });
   }
   addAddress(form: FormGroup): void {
