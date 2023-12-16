@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { DisplayCounterComponent } from '../display-counter/display-counter.component';
 
 @Component({
   selector: 'app-counter',
   standalone: true,
-  imports: [],
+  imports: [DisplayCounterComponent],
   templateUrl: './counter.component.html',
   styleUrl: './counter.component.scss',
 })
