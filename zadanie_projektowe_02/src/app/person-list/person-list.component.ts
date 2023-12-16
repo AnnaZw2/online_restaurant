@@ -13,13 +13,11 @@ export class PersonListComponent implements OnDestroy, OnInit {
   private dataSubscription: Subscription | undefined;
   showOnlyMissing = false;
 
-
-
   handleAddPerson(person: Person): void {
     this.arrayOfPeople = [person, ...this.arrayOfPeople.slice()];
   }
   handleDeletePerson(person: Person): void {
-this.arrayOfPeople = this.arrayOfPeople.filter(p => p.id !== person.id)
+    this.arrayOfPeople = this.arrayOfPeople.filter((p) => p.id !== person.id);
   }
   toggleShowOnlyMissing() {
     this.showOnlyMissing = !this.showOnlyMissing;
@@ -34,6 +32,7 @@ this.arrayOfPeople = this.arrayOfPeople.filter(p => p.id !== person.id)
     });
     console.log(this.arrayOfPeople);
   }
+  
   private loadInitialData(): Observable<Person[]> {
     // Simulate delay and return an observable
     return of(initialPeople).pipe(delay(2000));

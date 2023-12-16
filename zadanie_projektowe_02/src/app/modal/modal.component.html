@@ -2,7 +2,7 @@
 
 <div class="custom-modal" [ngClass]="{ 'show-modal': showModal }">
   <button class="close-button" (click)="closeModal()">X</button>
-  <div>{{ title }}</div>
+  <h3>{{ title }}</h3>
   <div>{{ body }}</div>
   <button class="cancel-button" (click)="closeModal()">Close</button>
   <button class="confirm-button" (click)="confirmAction()">Confirm</button>

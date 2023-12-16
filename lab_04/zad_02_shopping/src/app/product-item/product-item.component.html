@@ -1,0 +1,13 @@
+<div class="container  border border-secondary rounded" >
+    <div class="row align-items-center">
+      <div class="col-md-8">
+        <p>{{ item }}</p>
+      </div>
+      <div class="col-md-4">
+        <button (confirm)="onConfirm()" (click)="sendClickEvent()" type="button"  class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"  [title]="title"  >X</button>
+        <!-- <button (click)="sendClickEvent()" >X</button> -->
+      </div>
+     
+    </div>
+  </div>
+  
