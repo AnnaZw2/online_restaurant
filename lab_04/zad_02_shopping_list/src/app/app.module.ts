@@ -6,12 +6,14 @@ import { ModalComponent } from './modal/modal.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingService } from './shopping.service';
 import { FormsModule } from '@angular/forms';
+import { AlertComponent } from './alert/alert.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ModalComponent,
-    ShoppingListComponent
+    ShoppingListComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,

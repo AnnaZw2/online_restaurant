@@ -30,6 +30,7 @@
             </ul>
             <app-modal [modalTitle]="modalTitle" [modalContent]='modalContent' [isOpen]="isOpen"
                 (deleteConfirmed)="deleteConfirmed($event)"></app-modal>
+                <app-alert [isAlertOpen]="isAlertOpen" [alertMessage]="alertMessage"></app-alert>
             <!-- modal is outside of the loop -->
         </div>
     </div>

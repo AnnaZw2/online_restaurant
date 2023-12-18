@@ -54,6 +54,8 @@ export class ShoppingListComponent {
   list = this.shoppingService.ShoppingList;
   modalTitle = 'Delete item';
   modalContent = 'Are you sure you want to delete this item?';
+  isAlertOpen = false;
+  alertMessage = ''
   itemToDelete: Item = { name: '', bought: false, quantity: 0 };
   newItem:Item = {
     name: '',
@@ -62,12 +64,17 @@ export class ShoppingListComponent {
   };
   
   addItem(){
-    this.shoppingService.addItemToList(this.newItem)
+   const result = this.shoppingService.addItemToList(this.newItem)
     this.newItem = {
       name: '',
       bought: false,
       quantity: 0,
     };
+    console.log(result);
+    if("Item already exists"== result){
+      this.isAlertOpen = true;
+      this.alertMessage = result
+    }
   }
 
   deleteConfirmed(isConfirmed: boolean) {
