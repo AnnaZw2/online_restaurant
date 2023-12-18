@@ -12,7 +12,7 @@ export class ShoppingService {
   }
 
 
-  getShoppingList(){
+  get ShoppingList(){
     return this.shoppingList
   }
 
