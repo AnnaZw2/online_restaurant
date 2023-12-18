@@ -55,7 +55,20 @@ export class ShoppingListComponent {
   modalTitle = 'Delete item';
   modalContent = 'Are you sure you want to delete this item?';
   itemToDelete: Item = { name: '', bought: false, quantity: 0 };
-
+  newItem:Item = {
+    name: '',
+    bought: false,
+    quantity: 0,
+  };
+  
+  addItem(){
+    this.shoppingService.addItemToList(this.newItem)
+    this.newItem = {
+      name: '',
+      bought: false,
+      quantity: 0,
+    };
+  }
 
   deleteConfirmed(isConfirmed: boolean) {
     console.log(isConfirmed);
