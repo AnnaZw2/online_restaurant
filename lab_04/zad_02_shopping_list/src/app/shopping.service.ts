@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Item } from './interfaces/item.interface';
+import { Item } from 'src/models/item.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShoppingService {
-shoppingList: Item[] = []
+
+  shoppingList: Item[] = []
   constructor() { 
 
   }
+
 
   getShoppingList(){
     return this.shoppingList
@@ -17,7 +19,10 @@ shoppingList: Item[] = []
   addItemToList(item: Item){
     if(this.shoppingList.filter(i => i.name === item.name).length > 0){
       return "Item already exists"
-    }else{
+    }else if (item.name === ""){
+      return "Item name cannot be empty"
+    }
+    else{
       this.shoppingList.push(item)
       return "Item added successfully"
     }
@@ -33,4 +38,8 @@ shoppingList: Item[] = []
     return "List cleared successfully"
   }
 
+  removeBoughtItems(){
+    this.shoppingList = this.shoppingList.filter(i => i.bought === false)
+    return "Bought items removed successfully"
+  }
 }
