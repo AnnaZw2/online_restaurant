@@ -38,6 +38,9 @@ export class ShoppingService {
     return "List cleared successfully"
   }
 
+  get boughtItems(){
+    return this.shoppingList.filter(i => i.bought === true)
+  }
   removeBoughtItems(){
     this.shoppingList = this.shoppingList.filter(i => i.bought === false)
     return "Bought items removed successfully"
