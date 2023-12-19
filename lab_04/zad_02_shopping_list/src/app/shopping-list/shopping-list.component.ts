@@ -85,13 +85,9 @@ ngDoCheck(){
  console.log(this.isAlertOpen);
 }
 
-  addItem() {
-    const result = this.shoppingService.addItemToList(this.newItem);
-    this.newItem = {
-      name: '',
-      bought: false,
-      quantity: 0,
-    };
+  addItem(item: Item) {
+    const result = this.shoppingService.addItemToList(item);
+ console.log("item",item)
     console.log(result);
     if ('Item already exists' == result) {
       this.isAlertOpen = true;

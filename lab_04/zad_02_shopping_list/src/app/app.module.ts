@@ -7,13 +7,15 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingService } from './shopping.service';
 import { FormsModule } from '@angular/forms';
 import { AlertComponent } from './alert/alert.component';
+import { ItemFormComponent } from './item-form/item-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ModalComponent,
     ShoppingListComponent,
-    AlertComponent
+    AlertComponent,
+    ItemFormComponent
   ],
   imports: [
     BrowserModule,
