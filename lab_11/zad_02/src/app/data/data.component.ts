@@ -7,14 +7,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./data.component.css']
 })
 export class DataComponent {
-  status: boolean;
+  status: boolean = false;
 
-  constructor(private router: Router) {
+  constructor(private router: Router) { }
+
+  ngOnInit() {
     const statusValue = localStorage.getItem('status');
     this.status = statusValue === 'true';
-  }
 
-  redirectToStatusPage() {
-    this.router.navigate(['/set-status']);
+    if (!this.status) {
+      // Automatyczne przekierowanie, gdy status nie jest ustawiony
+      this.router.navigate(['/set-status']);
+    }
   }
 }
