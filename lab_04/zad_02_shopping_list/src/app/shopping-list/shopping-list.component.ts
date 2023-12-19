@@ -82,6 +82,7 @@ initShoppingList(){
 ngDoCheck(){
   
  this.isDisabled = this.shoppingService.boughtItems.length == 0 ;
+ console.log(this.isAlertOpen);
 }
 
   addItem() {
@@ -136,5 +137,9 @@ ngDoCheck(){
     this.modalContent = 'Are you sure you want to remove all bought items?';
 
     this.list = this.shoppingService.ShoppingList;
+  }
+
+  closeAlert(){
+    this.isAlertOpen = false
   }
 }
