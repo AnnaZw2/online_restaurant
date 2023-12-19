@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, DoCheck } from '@angular/core';
 import { ShoppingService } from '../shopping.service';
 import { Item } from 'src/models/item.interface';
 
@@ -7,7 +7,7 @@ import { Item } from 'src/models/item.interface';
   templateUrl: './shopping-list.component.html',
   styleUrls: ['./shopping-list.component.scss'],
 })
-export class ShoppingListComponent {
+export class ShoppingListComponent implements DoCheck {
     //properties related to modal
     isOpen = false;
     modalTitle = 'Delete item';
@@ -26,6 +26,9 @@ export class ShoppingListComponent {
       bought: false,
       quantity: 0,
     };
+
+    //properties related to shopping list buttons
+    isDisabled = true;
 
   constructor(private shoppingService: ShoppingService) {
     this.initShoppingList();
@@ -74,6 +77,11 @@ initShoppingList(){
 
 
   this.list = this.shoppingService.ShoppingList;
+
+}
+ngDoCheck(){
+  
+ this.isDisabled = this.shoppingService.boughtItems.length == 0 ;
 }
 
   addItem() {
@@ -118,10 +126,12 @@ initShoppingList(){
     this.shoppingService.removeItemFromList(item);
   }
 
-  
+
   removeBoughtItems() {
     this.deleteAllBoughtItems = true;
-    this.isOpen = true;
+    if(this.shoppingService.boughtItems.length != 0){
+      this.isOpen = true;
+    }
     this.modalTitle = 'Remove bought items';
     this.modalContent = 'Are you sure you want to remove all bought items?';
 
