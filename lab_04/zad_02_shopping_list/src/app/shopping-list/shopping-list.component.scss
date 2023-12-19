@@ -8,3 +8,18 @@
     margin: auto; 
 
   }
+
+  .btn-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: #dc3545; 
+    border-color: #dc3545; 
+    color: #fff; 
+    border-radius: 0.2rem;
+  }
+  
+.btn-delete-all{
+    color: #fff;
+    border: none;
+}
+
