@@ -4,6 +4,12 @@
   "newProjectRoot": "projects",
   "projects": {
     "projekt_egzaminacyjny": {
+      "i18n": {
+        "sourceLocale": "en-US",
+        "locales": {
+          "es-ES": "src/locale/messages.es.xlf"
+        }
+      },
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,6 +23,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "localize":["es-ES"],
             "outputPath": "dist/projekt_egzaminacyjny",
             "index": "src/index.html",
             "main": "src/main.ts",
