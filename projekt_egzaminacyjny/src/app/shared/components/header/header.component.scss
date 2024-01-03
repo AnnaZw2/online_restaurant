@@ -1,0 +1,27 @@
+.app-header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #f0f0f0;
+  padding: 10px;
+
+  .branding h1 {
+    margin: 0;
+  }
+
+  .search-container {
+    margin-left: 10px;
+    flex:1; // .search-container will take up all available space along the main axis inside the flex container. 
+    //so with it buttons and brnading are pushed to the edges not leaving maring
+    display: flex;
+    justify-content: center;
+  }
+
+  .auth-actions {
+    display: flex;
+
+    .p-button {
+      margin-left: 10px;
+    }
+  }
+}
