@@ -1,8 +1,9 @@
+@import "../../../core/constants/colors.scss";
 .app-header {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: #f0f0f0;
+  background-color: $primary_color;
   padding: 10px;
 
   .branding h1 {
