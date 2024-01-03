@@ -11,11 +11,17 @@
 
   .search-container {
     margin-left: 10px;
+ 
     flex:1; // .search-container will take up all available space along the main axis inside the flex container. 
     //so with it buttons and brnading are pushed to the edges not leaving maring
     display: flex;
     justify-content: center;
+
+    .p-inputtext {
+        width: 80%; 
+    }
   }
+
 
   .auth-actions {
     display: flex;
