@@ -1,6 +1,8 @@
 @import "../../../core/constants/colors.scss";
+
 .app-footer {
-    background-color: $primary_color;
+    border-top: $primary_color 1px solid;
+    color: black;
     padding: 10px;
     text-align: center;
   }
