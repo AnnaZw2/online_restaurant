@@ -4,8 +4,8 @@ import { QuizComponent } from './pages/quiz/quiz.component';
 import { QuizResultComponent } from './pages/quiz-result/quiz-result.component';
 
 const quizRoutes: Routes = [
-  { path: 'quiz', component: QuizComponent },
-  { path: 'results', component: QuizResultComponent },
+  { path: 'quiz/:id', component: QuizComponent },
+  { path: 'quiz/:id/results', component: QuizResultComponent },
   // Add more routes as needed
 ];
 
