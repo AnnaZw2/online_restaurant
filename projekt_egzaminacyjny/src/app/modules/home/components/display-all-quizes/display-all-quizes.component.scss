@@ -1,0 +1,41 @@
+.quiz-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  
+  .quiz-card {
+ 
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      text-align: center;
+  
+      .quiz-image {
+      width:30vh;
+       height: 20vh;
+      background-color: aqua;
+        margin-bottom: 10px;
+      }
+  
+      .quiz-title {
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+  
+      .quiz-description {
+        margin-bottom: 10px;
+      }
+  
+      .quiz-author,
+      .quiz-creation-date,
+      .quiz-num-questions,
+      .quiz-likes {
+        font-size: 0.9rem;
+        color: #555;
+      }
+    }
+  
+  

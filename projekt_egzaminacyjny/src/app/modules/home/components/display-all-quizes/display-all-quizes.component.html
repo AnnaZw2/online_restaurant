@@ -1,0 +1,17 @@
+<div class="quiz-grid">
+    <div class="quiz-card" *ngFor="let quiz of quizzes">
+    
+        <!-- hardcode the image for now -->
+        <div class="quiz-image">
+          <!-- Quiz image here -->
+        </div>
+        <div class="quiz-title">{{ quiz.title }}</div>
+        <div class="quiz-description">{{ quiz.description }}</div>
+        <div class="quiz-author">{{ quiz.author }}</div>
+        <div class="quiz-creation-date">{{ quiz.creationDate }}</div>
+        <div class="quiz-num-questions">{{ quiz.numOfQuestions }} Questions</div>
+        <div class="quiz-likes">{{ quiz.likes }} Likes</div>
+
+    </div>
+  </div>
+  
