@@ -7,9 +7,9 @@
         </div>
         <div class="quiz-title">{{ quiz.title }}</div>
         <div class="quiz-description">{{ quiz.description }}</div>
-        <div class="quiz-author">{{ quiz.author }}</div>
-        <div class="quiz-creation-date">{{ quiz.creationDate }}</div>
-        <div class="quiz-num-questions">{{ quiz.numOfQuestions }} Questions</div>
+        <div class="quiz-author">{{ quiz.author.username }}</div>
+        <div class="quiz-creation-date">{{ quiz.creationDate | date }}</div>
+        <!-- <div class="quiz-num-questions">{{ quiz.numOfQuestions }} Questions</div> -->
         <div class="quiz-likes">{{ quiz.likes }} Likes</div>
 
     </div>
