@@ -1,4 +1,3 @@
-import { Quiz } from 'src/app/modules/quiz/models/quiz.model';
 import { QuizService } from '../../../../features/services/quiz.service'; 
 import { Component, OnInit } from '@angular/core';
 import { QuizDto } from 'src/app/features/dto/quiz.dto';
