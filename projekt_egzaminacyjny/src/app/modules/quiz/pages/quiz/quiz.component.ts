@@ -1,19 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { QuizDto } from 'src/app/features/dto/quiz.dto';
+import { QuizService } from 'src/app/features/services/quiz.service';
+
 
 @Component({
   selector: 'app-quiz',
   templateUrl: './quiz.component.html',
-  styleUrls: ['./quiz.component.scss']
+  styleUrls: ['./quiz.component.scss'],
 })
-export class QuizComponent {
+export class QuizComponent implements OnInit {
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private quizService: QuizService
+  ) {}
+  quizId = '';
+  quiz: QuizDto | null = null;
 
-  quiz = 
-    {
-      title: 'Sample Quiz 1',
-      description: 'This is a sample quiz description.',
-      author: 'John Doe',
-      creationDate: '2022-01-01', // Replace with a valid date string or Date object
-      numOfQuestions: 10,
-      likes: 25,
-    }
+  ngOnInit(): void {
+    this.quizId = this.activatedRoute.snapshot.params['id'];
+    this.quizService.getOne(this.quizId).subscribe((data) => {
+        this.quiz = data
+    });
+    console.log(this.activatedRoute.snapshot.params['id']);
+  }
+
 }
