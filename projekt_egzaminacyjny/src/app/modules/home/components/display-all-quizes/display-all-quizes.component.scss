@@ -12,6 +12,14 @@
       align-items: center;
       padding: 20px;
       text-align: center;
+      transition: transform 0.3s;
+
+
+  &:hover {
+    transform: scale(1.05); 
+    cursor: pointer;
+ 
+  }
   
       .quiz-image {
       width:30vh;
