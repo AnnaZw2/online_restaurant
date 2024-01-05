@@ -1,3 +1,4 @@
+@import "../../../../core/constants/colors.scss";
 .quiz-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -24,7 +25,7 @@
       .quiz-image {
       width:30vh;
        height: 20vh;
-      background-color: aqua;
+      background-color: $image_color;
         margin-bottom: 10px;
       }
   
