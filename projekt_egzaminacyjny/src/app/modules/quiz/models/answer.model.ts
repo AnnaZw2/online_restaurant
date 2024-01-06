@@ -1,8 +1,7 @@
-export interface answer {
-    readonly id: string;
-    readonly answer: string;
-    readonly isCorrect: boolean;
-    readonly selected: boolean;
-     correctClass: string;
-
+export interface Answer {
+  readonly id: string;
+  readonly answer: string;
+  readonly isCorrect: boolean;
+  selected: boolean;
+  correctClass: string;
 }

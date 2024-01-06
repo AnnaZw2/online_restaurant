@@ -1,11 +1,11 @@
-import { answer } from "./answer.model";
+import { Answer } from './answer.model';
 
 export interface Question {
-    readonly answers: answer[]; 
-    readonly id: string;
-    readonly question: string;
-    readonly correctAnswer: string;
-    readonly option1: string;
-    readonly option2: string;
-    readonly option3: string;
+  readonly answers: Answer[];
+  readonly id: string;
+  readonly question: string;
+  readonly correctAnswer: string;
+  readonly option1: string;
+  readonly option2: string;
+  readonly option3: string;
 }
