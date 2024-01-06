@@ -10,7 +10,7 @@ export class HeaderComponent {
 
   constructor(private router: Router){}
 
-  redirectToHome(){
-    this.router.navigate(['/home']);
+  redirectTo(path:string){
+    this.router.navigate([path]);
   }
 }

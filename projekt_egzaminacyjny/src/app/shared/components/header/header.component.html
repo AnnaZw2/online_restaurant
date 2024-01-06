@@ -1,6 +1,6 @@
 <header class="app-header">
 
-    <div (click)="redirectToHome()" (keydown.enter)="redirectToHome()" tabindex="1" class="branding">
+    <div (click)="redirectTo('/home')" (keydown.enter)="redirectTo('/home')" tabindex="1" class="branding">
       <h1>QuizMaster</h1>
     </div>
 
@@ -9,8 +9,8 @@
       </div>
 
       <div class="auth-actions">
-        <button pButton type="button" label="Sign In" class="p-button  ">Sign in </button>
-        <button pButton type="button" label="Sign Up" class="p-button ">Sing up</button>
+        <button  (click)="redirectTo('/sing-in')" (keydown.enter)="redirectTo('/sing-in')" tabindex="1" pButton type="button" label="Sign In" class="p-button  ">Sign in </button>
+        <button  (click)="redirectTo('/sing-up')" (keydown.enter)="redirectTo('/sing-up')" tabindex="1" pButton type="button" label="Sign Up" class="p-button ">Sing up</button>
       </div>
 
 
