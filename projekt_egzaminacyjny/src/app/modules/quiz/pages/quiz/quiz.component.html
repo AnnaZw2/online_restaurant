@@ -1,8 +1,12 @@
 <div>
     <app-header></app-header>
     <div class="wrapper">
-        <h1>{{quiz?.title}}</h1>
-    </div>
+        <h1>{{ quiz?.title }}</h1>
+        <div *ngFor="let question of questions" class="wrapper-content">
+          <app-quiz-question-container [question]="question"></app-quiz-question-container>
+        </div>
+      </div>
+      <app-footer></app-footer>
 </div>
 
 

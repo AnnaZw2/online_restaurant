@@ -1,1 +1,15 @@
-<p>quiz-question-container works!</p>
+<div *ngIf="question" class="question">
+  <h3>{{ question.question }}</h3>
+  <div class="answers">
+    <div *ngFor="let answer of question.answers; let aIndex = index">
+      <input
+        type="radio"
+        [(ngModel)]="question.selectedAnswer"
+        [value]="answer"
+        id="{{ 'answer_' + aIndex }}"
+        name="{{ 'question_' + question.id }}"
+      />
+      <label for="{{ 'answer_' + aIndex }}">{{ answer.answer }}</label>
+    </div>
+  </div>
+</div>
