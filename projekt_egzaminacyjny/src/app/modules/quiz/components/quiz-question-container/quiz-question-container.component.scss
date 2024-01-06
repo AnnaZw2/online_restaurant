@@ -1,3 +1,4 @@
+@import '../../../../core/constants/colors.scss';
 .question {
     border: 1px solid #ced4da;
     border-radius: 5px;
@@ -19,12 +20,12 @@
   }
   
   .correct {
-    background-color: green;
+    background-color: $success_color;
     color: white;
   }
   
   .incorrect {
-    background-color: red;
+    background-color: $fail_color;
     color: white;
   }
   

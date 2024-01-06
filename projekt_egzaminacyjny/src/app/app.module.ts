@@ -8,6 +8,7 @@ import { SharedModule } from './shared/shared.module';
 import { QuizModule } from './modules/quiz/quiz.module';
 import { HttpClientModule } from '@angular/common/http';
 
+
 @NgModule({
   declarations: [
     AppComponent
