@@ -1,9 +1,9 @@
 .question {
     border: 1px solid #ced4da;
-    border-radius: 5px; 
-    padding: 10px; 
-    margin-bottom: 10px; 
-  }
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+  
   
   .answers {
     display: flex;
@@ -11,10 +11,21 @@
   }
   
   label {
-    margin-left: 10px; 
+    margin-left: 10px;
   }
   
   input[type="radio"] {
-    margin-right: 5px; 
+    margin-right: 5px;
   }
   
+  .correct {
+    background-color: green;
+    color: white;
+  }
+  
+  .incorrect {
+    background-color: red;
+    color: white;
+  }
+  
+}

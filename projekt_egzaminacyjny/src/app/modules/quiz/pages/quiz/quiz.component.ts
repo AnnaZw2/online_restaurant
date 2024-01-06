@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CreateQuestionDto } from 'src/app/features/dto/create-question.dto';
 import { QuizDto } from 'src/app/features/dto/quiz.dto';
@@ -12,12 +12,13 @@ import { QuizService } from 'src/app/features/services/quiz.service';
 export class QuizComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
-    private quizService: QuizService
+    private quizService: QuizService,
+    private cdr: ChangeDetectorRef
   ) {}
   quizId = '';
   quiz: QuizDto | null = null;
-  questions: CreateQuestionDto[] = [];
-
+  questions: any = [];
+  submitted = false;
 
   ngOnInit(): void {
     this.quizId = this.activatedRoute.snapshot.params['id'];
@@ -38,9 +39,26 @@ export class QuizComponent implements OnInit {
       ].sort(() => Math.random() - 0.5);
 
       const answers = options.map((option, idx) => {
-        return { answer: option, isCorrect: option === question.correctAnswer, index: idx, selected: false };
-      })
+        return {
+          answer: option,
+          isCorrect: option === question.correctAnswer,
+          index: idx,
+          selected: false,
+        };
+      });
+      console.log(question);
+      console.log(answers);
       return { ...question, answers };
     });
+  }
+
+  submitAnswers(): void {
+    this.submitted = true;
+    this.cdr.detectChanges();
+  }
+  retryQuiz(): void {
+    this.submitted = false;
+    this.questions = this.shuffleAnswers(this.quiz?.questions || []);
+    this.cdr.detectChanges();
   }
 }

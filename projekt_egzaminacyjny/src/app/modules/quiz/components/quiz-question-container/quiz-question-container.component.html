@@ -1,15 +1,22 @@
 <div *ngIf="question" class="question">
-  <h3>{{ question.question }}</h3>
-  <div class="answers">
-    <div *ngFor="let answer of question.answers; let aIndex = index">
-      <input
-        type="radio"
-        [(ngModel)]="question.selectedAnswer"
-        [value]="answer"
-        id="{{ 'answer_' + aIndex }}"
-        name="{{ 'question_' + question.id }}"
-      />
-      <label for="{{ 'answer_' + aIndex }}">{{ answer.answer }}</label>
+    <h5>{{ question.question }}</h5>
+    <div class="answers">
+      <div *ngFor="let answer of question.answers; let aIndex = index">
+        <div [ngClass]="{
+            'correct': answer.selected && answer.isCorrect && submitted,
+            'incorrect': answer.selected && !answer.isCorrect && submitted,
+          }">
+        <input
+          type="radio"
+          [checked]="answer.selected"
+          (change)="onAnswerSelected(question, answer)"
+          [value]="answer"
+          id="{{ 'answer_' + aIndex }}"
+          name="{{ 'question_' + question.id }}"
+   
+        />
+        <label for="{{ 'answer_' + aIndex }}">{{ answer.answer }}</label>
+    </div>
+      </div>
     </div>
   </div>
-</div>

@@ -1,3 +1,4 @@
+@import '../../../../core/constants/colors.scss' ;
 .wrapper {
     display: flex;
     flex-direction: column;
@@ -39,3 +40,21 @@
     margin-right: 5px;
   }
   
+  button {
+    margin-left: 10px;
+    background-color: $secondary_color;
+    border: 1px solid $secondary_color;
+    border-radius: 20px; 
+    transition: border 0.3s ease;
+
+    &:hover {
+      border: 1px solid darken($secondary_color, 10%);
+      box-shadow: 0 0 10px darken($secondary_color,10%); /* Add a white glowing border on hover */
+    }
+
+    
+  }
+  .retry{
+    background-color:white;
+    color: $secondary_color;
+  }

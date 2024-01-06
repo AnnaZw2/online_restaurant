@@ -1,4 +1,7 @@
+import { answer } from "./answer.model";
+
 export interface Question {
+    readonly answers: answer[]; 
     readonly id: string;
     readonly question: string;
     readonly correctAnswer: string;

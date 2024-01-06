@@ -1,3 +1,4 @@
+import { answer } from './../../models/answer.model';
 import { Component, Input } from '@angular/core';
 
 @Component({
@@ -7,7 +8,14 @@ import { Component, Input } from '@angular/core';
 })
 export class QuizQuestionContainerComponent  {
   @Input() question: any = null;
+@Input() submitted = false;  
+  onAnswerSelected(question: any, selectedAnswer: any): void {
+    question.answers.forEach((answer: any) => {
+      answer.selected = false; // Reset all other answers
+    });
+    selectedAnswer.selected = true; // Set the selected answer
 
-
+ 
+  }
 
 }
