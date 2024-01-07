@@ -1,4 +1,4 @@
-import { QuizService } from '../../../../features/services/quiz.service'; 
+import { QuizService } from '../../../../features/services/quiz/quiz.service'; 
 import { Component, OnInit } from '@angular/core';
 import { QuizDto } from 'src/app/features/dto/quiz.dto';
 import { Router } from '@angular/router';

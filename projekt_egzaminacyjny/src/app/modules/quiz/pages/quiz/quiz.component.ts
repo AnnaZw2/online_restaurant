@@ -1,8 +1,8 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component,  OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CreateQuestionDto } from 'src/app/features/dto/create-question.dto';
 import { QuizDto } from 'src/app/features/dto/quiz.dto';
-import { QuizService } from 'src/app/features/services/quiz.service';
+import { QuizService } from 'src/app/features/services/quiz/quiz.service';
 
 @Component({
   selector: 'app-quiz',
@@ -12,7 +12,7 @@ import { QuizService } from 'src/app/features/services/quiz.service';
 export class QuizComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
-    private quizService: QuizService,
+ private quizService: QuizService,
     private cdr: ChangeDetectorRef
   ) {}
   quizId = '';

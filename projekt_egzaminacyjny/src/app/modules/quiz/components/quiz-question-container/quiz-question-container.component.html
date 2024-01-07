@@ -13,7 +13,7 @@
           [value]="answer"
           id="{{ 'answer_' + aIndex }}"
           name="{{ 'question_' + question.id }}"
-   
+        [disabled]="submitted"
         />
         <label for="{{ 'answer_' + aIndex }}">{{ answer.answer }}</label>
     </div>

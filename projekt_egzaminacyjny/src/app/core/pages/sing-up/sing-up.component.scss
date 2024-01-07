@@ -46,18 +46,23 @@
 
       button {
         width: 100%;
-        background-color: $primary_color; 
-        border: 1px solid $primary_color; 
+        background-color: $darker_primary_color; 
+        border: 1px solid $darker_primary_color; 
         border-radius: 5px;
         color: white;
         padding: 10px;
         cursor: pointer;
+   
 
         &:hover {
-          background-color: darken($primary_color, 10%);
-          border: 1px solid darken($primary_color, 10%);
+          background-color: lighten($darker_primary_color, 10%);
+          border: 1px solid lighten($darker_primary_color, 10%);
         }
       }
     }
   }
+.custom-button{
+    margin-top: 4rem;
+}
+
 }

@@ -20,12 +20,14 @@
   }
   
   .correct {
-    background-color: $success_color;
+    background-color: lighten($success_color,20%);
+    border-radius: 20px;
     color: white;
   }
   
   .incorrect {
-    background-color: $fail_color;
+    background-color: lighten($fail_color,10%);
+    border-radius: 20px;
     color: white;
   }
   

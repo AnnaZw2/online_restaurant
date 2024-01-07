@@ -1,0 +1,13 @@
+@import '../../../core/constants/colors.scss';
+.p-button {
+    margin-left: 10px;
+    background-color: $secondary_color;
+    border: 1px solid $secondary_color;
+    border-radius: 20px; 
+    transition: border 0.3s ease;
+
+    &:hover {
+      border: 1px solid white;
+      box-shadow: 0 0 10px white; /* Add a white glowing border on hover */
+    }
+  }

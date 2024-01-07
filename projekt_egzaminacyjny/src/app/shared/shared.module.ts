@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { SingInButtonComponent } from './components/sing-in-button/sing-in-button.component';
+import { SingUpButtonComponent } from './components/sing-up-button/sing-up-button.component';
 
 
 
@@ -9,6 +11,8 @@ import { FooterComponent } from './components/footer/footer.component';
   declarations: [
     HeaderComponent,
     FooterComponent,
+    SingInButtonComponent,
+    SingUpButtonComponent,
   
   ],
   imports: [
@@ -17,6 +21,8 @@ import { FooterComponent } from './components/footer/footer.component';
   exports: [
     HeaderComponent,
     FooterComponent,
+    SingInButtonComponent,
+    SingUpButtonComponent,
   ]
 })
 export class SharedModule { }

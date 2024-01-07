@@ -5,6 +5,7 @@ import { SingUpComponent } from './pages/sing-up/sing-up.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { SharedModule } from '../shared/shared.module';
 import { BrandingComponent } from './components/branding/branding.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { BrandingComponent } from './components/branding/branding.component';
     ],
     imports: [
         CommonModule,
-        SharedModule
+        SharedModule,
+        FormsModule
   
     ]
 })
