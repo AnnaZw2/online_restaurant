@@ -1,0 +1,26 @@
+import { Gender } from '../enums/custom-enums';
+import { v4 as uuidv4 } from 'uuid';
+
+export interface Person {
+  id: string;
+  name: string;
+  surname: string;
+  age: number;
+  gender: Gender;
+  city: string;
+  lastTimeSeen: Date;
+  stillMissing: boolean;
+  missingDetails:MissingDetails
+
+}
+
+export interface MissingDetails {
+  description: string;
+  reportedBy: string;
+  assignedTo: string;
+  progress: string;
+}
+
+export function generateUUID(): string {
+  return uuidv4();
+}
