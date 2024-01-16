@@ -1,4 +1,4 @@
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -14,6 +14,7 @@ import { ModalComponent } from './modal/modal.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DetailsComponent } from './details/details.component';
 import { DisabledLinkDirective } from './directives/disabled-link-directive';
+import { EditDetailsComponent } from './edit-details/edit-details.component';
 
 @NgModule({
   declarations: [
@@ -28,8 +29,9 @@ import { DisabledLinkDirective } from './directives/disabled-link-directive';
     ModalComponent,
     DetailsComponent,
     DisabledLinkDirective,
+    EditDetailsComponent,
   ],
-  imports: [BrowserModule, FormsModule, AppRoutingModule],
+  imports: [BrowserModule, FormsModule, AppRoutingModule,   ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

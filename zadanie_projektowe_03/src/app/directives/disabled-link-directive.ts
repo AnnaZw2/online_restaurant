@@ -15,7 +15,7 @@ export class DisabledLinkDirective {
   }
 
   @HostBinding('style.text-decoration') get textDecoration() {
-    return this.isDisabled ? 'none' : 'underline'; // 'none' when disabled
+    return this.isDisabled ? 'none' : 'underline';
   }
 
   @HostBinding('style.color') get color() {

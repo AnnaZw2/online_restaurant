@@ -1,7 +1,7 @@
 <h5>Police database: missing people cases</h5>
 
 <app-person-form (addPerson)="handleAddPerson($event)"></app-person-form>
-
+<!-- <a [routerLink]="['/add']" class="btn btn-primary">Add Person</a> -->
 <app-stats *ngIf="arrayOfPeople.length!==0" [arrayOfPeople]="arrayOfPeople" class="pl-4"></app-stats>
 <div class="container">
     <ul class="list-unstyled pl-2">

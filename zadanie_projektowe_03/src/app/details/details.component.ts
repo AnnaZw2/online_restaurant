@@ -20,4 +20,14 @@ export class DetailsComponent implements OnInit {
       console.log(this.person);
     });
   }
+
+  toggleUserRole(): void {
+    // Toggle between "super-admin" and "admin" roles
+    const currentRole = localStorage.getItem("role");
+
+    const newRole = currentRole === 'admin' ? 'super-admin' : 'admin';
+
+    localStorage.setItem("role", newRole);
+    console.log(`Role toggled to: ${newRole}`);
+  }
 }
