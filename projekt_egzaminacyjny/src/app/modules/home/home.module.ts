@@ -5,6 +5,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { DisplayAllQuizesComponent } from './components/display-all-quizes/display-all-quizes.component';
 import { QuizService } from 'src/app/features/services/quiz/quiz.service';
 import { QuizRoutingModule } from '../quiz/quiz-routing.module';
+import { BrowserModule } from '@angular/platform-browser';
 
 
 
@@ -17,7 +18,8 @@ import { QuizRoutingModule } from '../quiz/quiz-routing.module';
   imports: [
     CommonModule,
     SharedModule,
-    QuizRoutingModule
+    QuizRoutingModule,
+    BrowserModule
   ],
   exports: [
     HomeComponent,
