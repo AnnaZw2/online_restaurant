@@ -1,74 +1,92 @@
 <!-- eslint-disable @angular-eslint/template/elements-content -->
 <form [formGroup]="quizForm" (ngSubmit)="onSubmit()" (ngSubmit)="submitted = true">
     <label>
-      Title:
-      <input type="text" formControlName="title" pInputText>
-      <div *ngIf="(quizForm.get('title')?.touched || submitted) && quizForm.get('title')?.errors?.['required']" class="error-message">Title is required</div>
-      <div *ngIf="(quizForm.get('title')?.touched || submitted) && quizForm.get('title')?.errors?.['notEmptyString']" class="error-message">{{ quizForm.get('title')?.errors?.['notEmptyString'] }}</div>
+        Title:
+        <input type="text" formControlName="title" pInputText>
+        <div *ngIf="(quizForm.get('title')?.touched || submitted) && quizForm.get('title')?.errors?.['required']"
+            class="error-message">Title is required</div>
+        <div *ngIf="(quizForm.get('title')?.touched || submitted) && quizForm.get('title')?.errors?.['notEmptyString']"
+            class="error-message">{{ quizForm.get('title')?.errors?.['notEmptyString'] }}</div>
     </label>
     <br>
     <label>
-      Description:
-      <textarea formControlName="description" pInputTextarea></textarea>
-      <div *ngIf="(quizForm.get('description')?.touched || submitted) && quizForm.get('description')?.errors?.['required']" class="error-message">Description is required</div>
-      <div *ngIf="(quizForm.get('description')?.touched || submitted) && quizForm.get('description')?.errors?.['notEmptyString']" class="error-message">{{ quizForm.get('description')?.errors?.['notEmptyString'] }}</div>
+        Description:
+        <textarea formControlName="description" pInputTextarea></textarea>
+        <div *ngIf="(quizForm.get('description')?.touched || submitted) && quizForm.get('description')?.errors?.['required']"
+            class="error-message">Description is required</div>
+        <div *ngIf="(quizForm.get('description')?.touched || submitted) && quizForm.get('description')?.errors?.['notEmptyString']"
+            class="error-message">{{ quizForm.get('description')?.errors?.['notEmptyString'] }}</div>
     </label>
     <br>
     <label for="categoryDropdown">
         Category:
     </label>
     <div class="custom-dropdown">
-        <div class="selected-item" tabindex="0" (click)="toggleDropdown()" (keyup.enter)="toggleDropdown()" (keyup.space)="toggleDropdown()">
-          {{ selectedCategory || 'Select Category' }}
+        <div class="selected-item" tabindex="0" (click)="toggleDropdown()" (keyup.enter)="toggleDropdown()"
+            (keyup.space)="toggleDropdown()">
+            {{ selectedCategory || 'Select Category' }}
         </div>
         <ul *ngIf="showDropdown" class="dropdown-list">
-          <li *ngFor="let category of categories" (click)="selectCategory(category)" (keyup.enter)="selectCategory(category)" tabindex="0">
-            {{ category }}
-          </li>
+            <li *ngFor="let category of categories" (click)="selectCategory(category)"
+                (keyup.enter)="selectCategory(category)" tabindex="0">
+                {{ category }}
+            </li>
         </ul>
-   
+
     </div>
-    <div *ngIf="(quizForm.get('category')?.touched || submitted) && quizForm.get('category')?.errors?.['required']" class="error-message">Category is required</div>
+    <div *ngIf="(quizForm.get('category')?.touched || submitted) && quizForm.get('category')?.errors?.['required']"
+        class="error-message">Category is required</div>
     <br>
     <div formArrayName="questions">
-      <div *ngFor="let question of questions.controls; let i = index" [formGroupName]="i">
-        <h3>Question {{ i + 1 }}</h3>
-        <label>
-          Question:
-          <input type="text" formControlName="question" pInputText>
-          <div *ngIf="(questions.controls[i]?.get('question')?.touched || submitted) && (questions.controls[i]?.get('question')?.errors?.['required'])" class="error-message">Question is required</div>
-          <div *ngIf="(questions.controls[i]?.get('question')?.touched || submitted) && (questions.controls[i]?.get('question')?.errors?.['notEmptyString'])" class="error-message">{{ questions.controls[i].get('question')?.errors?.['notEmptyString'] }}</div>
-        </label>
-        <br>
-        <label>
-          Correct Answer:
-          <input type="text" formControlName="correctAnswer" pInputText>
-          <div *ngIf="(questions.controls[i]?.get('correctAnswer')?.touched || submitted) && (questions.controls[i]?.get('correctAnswer')?.errors?.['required'])" class="error-message">Correct answer is required</div>
-          <div *ngIf="(questions.controls[i]?.get('correctAnswer')?.touched || submitted) && (questions.controls[i]?.get('correctAnswer')?.errors?.['notEmptyString'])" class="error-message">{{ questions.controls[i].get('correctAnswer')?.errors?.['notEmptyString'] }}</div>
-        </label>
-        <br>
-        <label>
-          Option 1:
-          <input type="text" formControlName="option1" pInputText>
-          <div *ngIf="(questions.controls[i]?.get('option1')?.touched || submitted) && (questions.controls[i]?.get('option1')?.errors?.['required'])" class="error-message">Option 1 is required</div>
-          <div *ngIf="(questions.controls[i]?.get('option1')?.touched || submitted) && (questions.controls[i]?.get('option1')?.errors?.['notEmptyString'])" class="error-message">{{ questions.controls[i].get('option1')?.errors?.['notEmptyString'] }}</div>
-        </label>
-        <br>
-        <label>
-          Option 2:
-          <input type="text" formControlName="option2" pInputText>
-          <div *ngIf="(questions.controls[i]?.get('option2')?.touched || submitted) && (questions.controls[i]?.get('option2')?.errors?.['required'])" class="error-message">Option 2 is required</div>
-          <div *ngIf="(questions.controls[i]?.get('option2')?.touched || submitted) && (questions.controls[i]?.get('option2')?.errors?.['notEmptyString'])" class="error-message">{{ questions.controls[i].get('option2')?.errors?.['notEmptyString'] }}</div>
-        </label>
-        <br>
-        <label>
-          Option 3:
-          <input type="text" formControlName="option3" pInputText>
-          <div *ngIf="(questions.controls[i]?.get('option3')?.touched || submitted) && (questions.controls[i]?.get('option3')?.errors?.['required'])" class="error-message">Option 3 is required</div>
-          <div *ngIf="(questions.controls[i]?.get('option3')?.touched || submitted) && (questions.controls[i]?.get('option3')?.errors?.['notEmptyString'])" class="error-message">{{ questions.controls[i].get('option3')?.errors?.['notEmptyString'] }}</div>
-        </label>
-        <br>
-      </div>
+        <div *ngFor="let question of questions.controls; let i = index" [formGroupName]="i">
+            <h3>Question {{ i + 1 }}</h3>
+            <label>
+                Question:
+                <input type="text" formControlName="question" pInputText>
+                <div *ngIf="(questions.controls[i]?.get('question')?.touched || submitted) && (questions.controls[i]?.get('question')?.errors?.['required'])"
+                    class="error-message">Question is required</div>
+                <div *ngIf="(questions.controls[i]?.get('question')?.touched || submitted) && (questions.controls[i]?.get('question')?.errors?.['notEmptyString'])"
+                    class="error-message">{{ questions.controls[i].get('question')?.errors?.['notEmptyString'] }}</div>
+            </label>
+            <br>
+            <label>
+                Correct Answer:
+                <input type="text" formControlName="correctAnswer" pInputText>
+                <div *ngIf="(questions.controls[i]?.get('correctAnswer')?.touched || submitted) && (questions.controls[i]?.get('correctAnswer')?.errors?.['required'])"
+                    class="error-message">Correct answer is required</div>
+                <div *ngIf="(questions.controls[i]?.get('correctAnswer')?.touched || submitted) && (questions.controls[i]?.get('correctAnswer')?.errors?.['notEmptyString'])"
+                    class="error-message">{{ questions.controls[i].get('correctAnswer')?.errors?.['notEmptyString'] }}
+                </div>
+            </label>
+            <br>
+            <label>
+                Option 1:
+                <input type="text" formControlName="option1" pInputText>
+                <div *ngIf="(questions.controls[i]?.get('option1')?.touched || submitted) && (questions.controls[i]?.get('option1')?.errors?.['required'])"
+                    class="error-message">Option 1 is required</div>
+                <div *ngIf="(questions.controls[i]?.get('option1')?.touched || submitted) && (questions.controls[i]?.get('option1')?.errors?.['notEmptyString'])"
+                    class="error-message">{{ questions.controls[i].get('option1')?.errors?.['notEmptyString'] }}</div>
+            </label>
+            <br>
+            <label>
+                Option 2:
+                <input type="text" formControlName="option2" pInputText>
+                <div *ngIf="(questions.controls[i]?.get('option2')?.touched || submitted) && (questions.controls[i]?.get('option2')?.errors?.['required'])"
+                    class="error-message">Option 2 is required</div>
+                <div *ngIf="(questions.controls[i]?.get('option2')?.touched || submitted) && (questions.controls[i]?.get('option2')?.errors?.['notEmptyString'])"
+                    class="error-message">{{ questions.controls[i].get('option2')?.errors?.['notEmptyString'] }}</div>
+            </label>
+            <br>
+            <label>
+                Option 3:
+                <input type="text" formControlName="option3" pInputText>
+                <div *ngIf="(questions.controls[i]?.get('option3')?.touched || submitted) && (questions.controls[i]?.get('option3')?.errors?.['required'])"
+                    class="error-message">Option 3 is required</div>
+                <div *ngIf="(questions.controls[i]?.get('option3')?.touched || submitted) && (questions.controls[i]?.get('option3')?.errors?.['notEmptyString'])"
+                    class="error-message">{{ questions.controls[i].get('option3')?.errors?.['notEmptyString'] }}</div>
+            </label>
+            <br>
+        </div>
     </div>
     <button type="button" (click)="addQuestion()" pButton icon="pi pi-plus" label="Add New Question"></button>
     <br>

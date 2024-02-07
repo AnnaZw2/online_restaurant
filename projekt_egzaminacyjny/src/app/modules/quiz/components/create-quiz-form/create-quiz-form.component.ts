@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { catchError, finalize, of, tap } from 'rxjs';
 import { CategoryEnum } from 'src/app/features/dto/category.enum';
@@ -6,6 +6,7 @@ import { CreateQuizDto } from 'src/app/features/dto/create-quiz.dto';
 import { QuizService } from 'src/app/features/services/quiz/quiz.service';
 import { UserService } from 'src/app/features/services/user/user.service';
 import { notEmptyStringValidator } from 'src/app/shared/validators/not-empty-string-validator'
+import { Quiz } from '../../models/quiz.model';
 
 
 @Component({
@@ -14,7 +15,7 @@ import { notEmptyStringValidator } from 'src/app/shared/validators/not-empty-str
   styleUrls: ['./create-quiz-form.component.scss']
 })
 export class CreateQuizFormComponent implements OnInit {
- 
+  @Input() existingQuiz: Quiz | null = null;
   quizForm!: FormGroup;
   categories = Object.values(CategoryEnum);
   showDropdown = false;

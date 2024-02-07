@@ -5,7 +5,7 @@
 
 
 
-  <div class="quiz-card" *ngFor="let quiz of quizzes" (click)="redirectToQuiz(quiz.id)"
+  <div class="quiz-card" *ngFor="let quiz of  getPaginatedQuizzes()" (click)="redirectToQuiz(quiz.id)"
     (keydown.enter)="redirectToQuiz(quiz.id)" tabindex="0">
 
   
@@ -15,11 +15,18 @@
     </div>
     <div class="quiz-title">{{ quiz.title }}</div>
     <div class="quiz-description">{{ quiz.description }}</div>
-    <div class="quiz-author">{{ quiz.author.username }}</div>
     <div class="quiz-creation-date">{{ quiz.creationDate | date }}</div>
     <div class="quiz-num-questions">{{ quiz.questions.length }} Questions</div>
     <div class="quiz-likes">{{ quiz.likes }} Likes</div>
     <div>{{quiz.category}}</div>
 
   </div>
+</div>
+
+<div class="pagination">
+  <div class="pagination">
+
+    <p-paginator [rows]="pageSize" [totalRecords]="totalQuizzes" [first]="first" (onPageChange)="onPageChange($event)"></p-paginator>
+  </div>
+  
 </div>
