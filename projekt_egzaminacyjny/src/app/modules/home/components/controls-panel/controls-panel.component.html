@@ -1,3 +1,9 @@
 
 <!-- eslint-disable @angular-eslint/template/elements-content -->
 <button (click)="navigateToCreateQuiz()" pButton type="button" label="Create New Quiz" class=""></button>
+<div class="filter-option">
+    <p>Filter by Category:</p>
+    <select [(ngModel)]="filterByCategory" (change)="applyFilters()">
+      <option *ngFor="let category of categoryOptions" [value]="category">{{ category }}</option>
+    </select>
+</div>
