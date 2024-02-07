@@ -14,7 +14,7 @@
     
 
     &:hover {
-      background-color: lighten($primary_color, 13%);
+      background-color: $hover_primary_color;
  
     }
 

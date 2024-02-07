@@ -6,23 +6,14 @@ import { DisplayAllQuizesComponent } from './components/display-all-quizes/displ
 import { QuizService } from 'src/app/features/services/quiz/quiz.service';
 import { QuizRoutingModule } from '../quiz/quiz-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { CoreModule } from 'src/app/core/core.module';
 
 
 @NgModule({
-  declarations: [
-    HomeComponent,
-    DisplayAllQuizesComponent
-  ],
+  declarations: [HomeComponent, DisplayAllQuizesComponent,    
+    ],
   providers: [QuizService],
-  imports: [
-    CommonModule,
-    SharedModule,
-    QuizRoutingModule,
-    BrowserModule
-  ],
-  exports: [
-    HomeComponent,
-  ]
+  imports: [CommonModule, SharedModule, QuizRoutingModule, BrowserModule,CoreModule],
+  exports: [HomeComponent],
 })
-export class HomeModule { }
+export class HomeModule {}

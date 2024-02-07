@@ -11,8 +11,9 @@
   </div>
 
   <div class="auth-actions">
-    <app-sing-in-button class="sing-in"></app-sing-in-button>
-    <app-sing-up-button class="sing-up"></app-sing-up-button>
+    <app-sing-in-button *ngIf="!isAuthenticated()" class="sing-in"></app-sing-in-button>
+    <app-sing-up-button *ngIf="!isAuthenticated()" class="sing-up"></app-sing-up-button>
+    <app-menu *ngIf="isAuthenticated()" class="menu"></app-menu>
   </div>
 
 
