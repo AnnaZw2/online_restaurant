@@ -1,0 +1,14 @@
+
+h1 {
+    &:hover {
+       color: lighten(black, 43%);
+        cursor: pointer;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    h1 {
+        font-size: 1.2rem;
+        margin-right: 0; 
+    }
+}

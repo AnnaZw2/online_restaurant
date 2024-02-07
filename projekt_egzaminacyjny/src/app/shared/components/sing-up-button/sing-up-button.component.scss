@@ -1,13 +1,23 @@
 @import '../../../core/constants/colors.scss';
-.p-button {
+
+.p-button-signup {
     margin-left: 10px;
     background-color: $secondary_color;
     border: 1px solid $secondary_color;
     border-radius: 20px; 
     transition: border 0.3s ease;
+    padding: 10px 20px; /* Set padding for the button */
 
     &:hover {
       border: 1px solid white;
       box-shadow: 0 0 10px white; /* Add a white glowing border on hover */
     }
-  }
+}
+
+/* Media Query for small screens */
+@media screen and (max-width: 768px) {
+    .p-button-signup {
+        padding: 8px 16px; /* Adjust padding for smaller screens */
+        font-size: 14px; /* Adjust font size for smaller screens */
+    }
+}

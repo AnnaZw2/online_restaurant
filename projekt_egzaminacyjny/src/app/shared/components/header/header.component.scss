@@ -42,4 +42,25 @@
     display: flex;
 
   }
+
+  @media screen and (max-width: 768px) {
+
+    input[type="text"] {
+        width: 100%; 
+        margin-right: 0;
+        margin-left: 0;
+        margin-bottom: 10px; 
+    }
+
+.search-container{
+  margin-left: 2px;
+  margin-right: 2px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+
+
+  
+}
 }

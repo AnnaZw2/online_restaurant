@@ -1,16 +1,18 @@
 <header class="app-header">
 
-  <div (click)="redirectTo('/home')" (keydown.enter)="redirectTo('/home')" tabindex="1" class="branding">
+  <!-- <div (click)="redirectTo('/home')" (keydown.enter)="redirectTo('/home')" tabindex="1" class="branding">
     <h1>QuizMaster</h1>
-  </div>
+  </div> -->
+<app-branding></app-branding>
+
 
   <div class="search-container">
     <input pInputText placeholder="Search quizzes" class="p-inputtext p-mr-2">
   </div>
 
   <div class="auth-actions">
-    <app-sing-in-button></app-sing-in-button>
-    <app-sing-up-button></app-sing-up-button>
+    <app-sing-in-button class="sing-in"></app-sing-in-button>
+    <app-sing-up-button class="sing-up"></app-sing-up-button>
   </div>
 
 

@@ -4,6 +4,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SingInButtonComponent } from './components/sing-in-button/sing-in-button.component';
 import { SingUpButtonComponent } from './components/sing-up-button/sing-up-button.component';
+import { BrandingComponent } from './components/branding/branding.component';
 
 
 
@@ -13,6 +14,7 @@ import { SingUpButtonComponent } from './components/sing-up-button/sing-up-butto
     FooterComponent,
     SingInButtonComponent,
     SingUpButtonComponent,
+    BrandingComponent
   
   ],
   imports: [
@@ -23,6 +25,7 @@ import { SingUpButtonComponent } from './components/sing-up-button/sing-up-butto
     FooterComponent,
     SingInButtonComponent,
     SingUpButtonComponent,
+    BrandingComponent
   ]
 })
 export class SharedModule { }
