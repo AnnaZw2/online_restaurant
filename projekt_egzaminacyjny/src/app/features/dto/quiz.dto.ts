@@ -1,3 +1,4 @@
+import { CategoryEnum } from "./category.enum";
 import { CreateQuestionDto } from "./create-question.dto";
 
 export interface QuizDto {
@@ -14,5 +15,6 @@ export interface QuizDto {
         readonly password: string;
         readonly creationDate: Date;
     }
+    readonly category: CategoryEnum;
   }
   
