@@ -4,6 +4,7 @@
 <div class="filter-option">
     <p>Filter by Category:</p>
     <select [(ngModel)]="filterByCategory" (change)="applyFilters()">
+        <option value="all">All</option> 
       <option *ngFor="let category of categoryOptions" [value]="category">{{ category }}</option>
     </select>
 </div>

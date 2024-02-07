@@ -18,7 +18,7 @@ export class DisplayAllQuizesComponent implements OnInit {
   totalQuizzes = 0;
   first = this.currentPage * this.pageSize - this.pageSize
 
-  selectedCategory: CategoryEnum | null = null
+  selectedCategory: CategoryEnum | null |string = null
   constructor(private quizService: QuizService,private userService: UserService, private router: Router) {}
  
 
@@ -68,13 +68,15 @@ export class DisplayAllQuizesComponent implements OnInit {
   }
    
   applyFilters(filterCriteria: any) {
-    console.log("filterCriteria",filterCriteria)
     const { category } = filterCriteria;
     this.selectedCategory = category;
     // Apply filters here
     this.filteredQuizzes = this.quizzes.filter((quiz) => {
       // Implement filtering logic based on filter criteria
-      if (this.selectedCategory) {
+      if(this.selectedCategory=="all") {
+        this.selectedCategory
+      }
+     else if (this.selectedCategory) {
         return quiz.category === this.selectedCategory;
       }
       return true; // Return true if no filters are applied
