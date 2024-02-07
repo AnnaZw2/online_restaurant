@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormArray, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import {FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CategoryEnum } from 'src/app/features/dto/category.enum';
 import { QuizDto } from 'src/app/features/dto/quiz.dto';
-
+import { notEmptyStringValidator } from 'src/app/shared/validators/not-empty-string-validator'
 @Component({
   selector: 'app-create-quiz-form',
   templateUrl: './create-quiz-form.component.html',
@@ -19,8 +19,8 @@ export class CreateQuizFormComponent implements OnInit {
 
   ngOnInit() {
     this.quizForm = this.formBuilder.group({
-      title: ['', Validators.required, this.notEmptyStringValidator],
-      description: ['', Validators.required, this.notEmptyStringValidator],
+      title: ['', [Validators.required, notEmptyStringValidator]],
+      description: ['', [Validators.required,notEmptyStringValidator]],
       category: ['', Validators.required],
       questions: this.formBuilder.array([
         this.createQuestionFormGroup(),
@@ -29,13 +29,7 @@ export class CreateQuizFormComponent implements OnInit {
       ])
     });
   }
-  notEmptyStringValidator(control: AbstractControl): { [key: string]: any } | null {
-    const value = control.value as string;
-    if (value.trim().length === 0) {
-      return { 'notEmptyString': { value: value } };
-    }
-    return null;
-  }
+
 
   get questions() {
     return this.quizForm.get('questions') as FormArray;
@@ -43,11 +37,11 @@ export class CreateQuizFormComponent implements OnInit {
 
   createQuestionFormGroup(): FormGroup {
     return this.formBuilder.group({
-      question: ['', Validators.required, this.notEmptyStringValidator],
-      correctAnswer: ['', Validators.required, this.notEmptyStringValidator],
-      option1: ['', Validators.required, this.notEmptyStringValidator],
-      option2: ['', Validators.required, this.notEmptyStringValidator],
-      option3: ['', Validators.required, this.notEmptyStringValidator]
+      question: ['',[ Validators.required, notEmptyStringValidator]],
+      correctAnswer: ['',[ Validators.required, notEmptyStringValidator]],
+      option1: ['',[ Validators.required, notEmptyStringValidator]],
+      option2: ['', [ Validators.required, notEmptyStringValidator]],
+      option3: ['',[ Validators.required,notEmptyStringValidator]]
     });
   }
 
