@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CoreModule } from './core/core.module';
 
 
+
 @NgModule({
   declarations: [
     AppComponent
@@ -21,7 +22,8 @@ import { CoreModule } from './core/core.module';
     QuizModule,
     SharedModule,
     HttpClientModule,
-    CoreModule
+    CoreModule,
+  
   ],
   providers: [],
   bootstrap: [AppComponent]

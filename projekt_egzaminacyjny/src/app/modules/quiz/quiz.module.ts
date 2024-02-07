@@ -6,12 +6,14 @@ import { SharedModule } from "../../shared/shared.module";
 import { QuizQuestionContainerComponent } from './components/quiz-question-container/quiz-question-container.component';
 import { CheckboxModule } from 'primeng/checkbox';
 import { FormsModule } from '@angular/forms';
+import { CreateQuizComponent } from './pages/create-quiz/create-quiz.component';
 
 
 @NgModule({
     declarations: [
         QuizComponent,
-        QuizQuestionContainerComponent
+        QuizQuestionContainerComponent,
+        CreateQuizComponent
     ],
     imports: [
         CommonModule,

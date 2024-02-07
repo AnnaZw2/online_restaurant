@@ -7,13 +7,14 @@ import { QuizService } from 'src/app/features/services/quiz/quiz.service';
 import { QuizRoutingModule } from '../quiz/quiz-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { CoreModule } from 'src/app/core/core.module';
-
+import { ButtonModule } from 'primeng/button';
+import { ContolsPanelComponent } from './components/contols-panel/contols-panel.component';
 
 @NgModule({
-  declarations: [HomeComponent, DisplayAllQuizesComponent,    
+  declarations: [HomeComponent, DisplayAllQuizesComponent, ContolsPanelComponent,    
     ],
   providers: [QuizService],
-  imports: [CommonModule, SharedModule, QuizRoutingModule, BrowserModule,CoreModule],
+  imports: [CommonModule, SharedModule, QuizRoutingModule, BrowserModule,CoreModule,  ButtonModule],
   exports: [HomeComponent],
 })
 export class HomeModule {}

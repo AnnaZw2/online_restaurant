@@ -1,7 +1,14 @@
+
 <div class="quiz-grid">
+  
+
+
+
+
   <div class="quiz-card" *ngFor="let quiz of quizzes" (click)="redirectToQuiz(quiz.id)"
     (keydown.enter)="redirectToQuiz(quiz.id)" tabindex="0">
 
+  
     <!-- hardcode the image for now -->
     <div class="quiz-image">
 
