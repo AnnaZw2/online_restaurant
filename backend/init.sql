@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS quiz (
     likes INT DEFAULT 0,
     creationDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     authorId INT,
-  category ENUM('Languages', 'Biology', 'Chemistry', 'Science', 'Art', 'Geography', 'Informatics', 'Politics', 'Other'),
+  category ENUM('Languages', 'Biology', 'Chemistry','Science', 'Art', 'Geography', 'Informatics', 'Politics','History', 'Other'),
     FOREIGN KEY (authorId) REFERENCES user(id)
 );
 
@@ -202,7 +202,6 @@ VALUES
     (13, "Who was the famous queen of ancient Egypt?", "Cleopatra", "Nefertiti", "Hatshepsut", "Ramses II"),
     (13, "Which ancient Greek philosopher is known for his teachings on ethics?", "Socrates", "Plato", "Aristotle", "Heraclitus");
 
--- Quiz 14: Geography and World Capitals Quiz
 -- Quiz 14: Geography and World Capitals Quiz
 INSERT INTO quiz (title, description, likes, creationDate, authorId, category)
 VALUES
