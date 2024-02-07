@@ -1,17 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SingInComponent } from './pages/sing-in/sing-in.component';
+import { SignInComponent } from './pages/sing-in/sing-in.component';
 import { SingUpComponent } from './pages/sing-up/sing-up.component';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    SingInComponent,
+    SignInComponent,
     SingUpComponent,
 
   ],
 
-  imports: [CommonModule, SharedModule, FormsModule],
+  imports: [CommonModule, SharedModule, FormsModule, ReactiveFormsModule, ],
 })
 export class CoreModule {}

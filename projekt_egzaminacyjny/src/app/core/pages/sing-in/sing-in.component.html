@@ -2,35 +2,19 @@
   <app-branding></app-branding>
   <div class="card">
     <h2>Sign In</h2>
-    <form>
+    <form [formGroup]="signInForm" (ngSubmit)="signIn()">
       <div class="form-group">
         <label for="username">Username</label>
-        <input
-        
-        
-          id="username"
-          type="text"
-          pInputText
-          class="form-control"
-        />
+        <input formControlName="username" id="username" type="text" class="form-control" required>
+        <div *ngIf="signInForm.get('username')?.errors?.['required'] && signInForm.get('username')?.touched" class="error">Username is required</div>
       </div>
-
-      <div class="form-group group-password" >
+      <div class="form-group group-password">
         <label for="password">Password</label>
-        <input 
-         id="password" type="password" pPassword class="form-control " />
+        <input #passwordInput formControlName="password" id="password" type="password" class="form-control" required>
+        <div *ngIf="signInForm.get('password')?.errors?.['required']  && signInForm.get('password')?.touched" class="error">Password is required</div>
       </div>
       <div class="error-message error" *ngIf="errorMessage">{{ errorMessage }}</div>
-      <button
-        pButton
-        type="button"
-        label="Sign In"
-        class="p-mt-2 p-button p-button-success"
-        (click)="this.signIn()"
-      >
-        Sign In
-      </button>
-     
+      <button type="submit" class="p-mt-2 p-button p-button-success">Sign In</button>
     </form>
   </div>
   <app-sing-up-button class="custom-button"></app-sing-up-button>

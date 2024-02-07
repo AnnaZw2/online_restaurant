@@ -1,36 +1,44 @@
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from './../../../features/services/user/user.service';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-sing-in',
   templateUrl: './sing-in.component.html',
   styleUrls: ['./sing-in.component.scss']
 })
-export class SingInComponent {
-  constructor(
-    private userSerivce: UserService,
-  
-  ){}
- 
-  username = '';
-  password = '';
-  errorMessage = ''
-  
-  signIn(){
-     this.username = (<HTMLInputElement>document.getElementById('username')).value;
-     this.password = (<HTMLInputElement>document.getElementById('password')).value;
+export class SignInComponent {
+  signInForm: FormGroup;
+  errorMessage = '';
 
-    console.log(this.username);
-    console.log(this.password);
-    this.userSerivce.login(this.username,this.password).subscribe(
-      (response) => {
+  @ViewChild('passwordInput') passwordInput!: HTMLInputElement;
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private userService: UserService
+  ) {
+    this.signInForm = this.formBuilder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
+    });
+  }
+
+  signIn(): void {
+    if (this.signInForm.invalid) {
+      return;
+    }
+
+    const username = this.signInForm.get('username')?.value;
+    const password = this.signInForm.get('password')?.value;
+
+    this.userService.login(username, password).subscribe(
+      response => {
         console.log(response);
       },
-      (error) => {
-        this.errorMessage = "Invalid username or password!";
-        console.log(error);
+      error => {
+        this.errorMessage = 'Invalid username or password!';
+        console.error(error);
       }
-    )
-
-}
+    );
+  }
 }
