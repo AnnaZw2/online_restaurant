@@ -23,6 +23,10 @@ export class UserService {
 
     }
 
+    getUsername(): string | null {
+      return localStorage.getItem('username') || null;
+    }
+
     login(username: string, password: string): Observable<UserDTO> {
       return this.http.get<UserDTO>(`${this.quiz_api_url}/${username}/${password}`).pipe(
         map((response: UserDTO) => {

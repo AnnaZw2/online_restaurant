@@ -14,7 +14,7 @@ import {DropdownModule} from 'primeng/dropdown';
     BrandingComponent,
     HeaderComponent,
     FooterComponent,
-    MenuComponent,
+    MenuComponent
   ],
   imports: [CommonModule,DropdownModule],
   exports: [SingInButtonComponent, SingUpButtonComponent, BrandingComponent,HeaderComponent,FooterComponent],
