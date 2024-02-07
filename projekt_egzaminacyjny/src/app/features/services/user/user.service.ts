@@ -39,4 +39,16 @@ export class UserService {
         })
       );
     }
+
+    logout() {
+  
+      localStorage.removeItem('username');
+      localStorage.removeItem('email');
+      localStorage.removeItem('isLogged');
+      this.router.navigate(['/sing-in']);
+  }
+
+  isAuthenticated(): boolean {
+    return localStorage.getItem('isLogged') === 'true';
+}
 }
