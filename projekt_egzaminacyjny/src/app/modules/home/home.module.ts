@@ -8,11 +8,11 @@ import { QuizRoutingModule } from '../quiz/quiz-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { CoreModule } from 'src/app/core/core.module';
 import { ButtonModule } from 'primeng/button';
-import { ContolsPanelComponent } from './components/contols-panel/contols-panel.component';
+import { ControlsPanelComponent } from './components/controls-panel/controls-panel.component';
+
 
 @NgModule({
-  declarations: [HomeComponent, DisplayAllQuizesComponent, ContolsPanelComponent,    
-    ],
+  declarations: [HomeComponent, DisplayAllQuizesComponent, ControlsPanelComponent ],
   providers: [QuizService],
   imports: [CommonModule, SharedModule, QuizRoutingModule, BrowserModule,CoreModule,  ButtonModule],
   exports: [HomeComponent],
