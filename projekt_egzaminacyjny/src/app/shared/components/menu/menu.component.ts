@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserService } from 'src/app/features/services/user/user.service';
 
 @Component({
   selector: 'app-menu',
@@ -6,9 +8,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent {
-  menuItems = [
-    { label: 'My Profile', icon: 'pi pi-user' },
-    { label: 'My Quizzes', icon: 'pi pi-list' },
-    { label: 'Sign Out', icon: 'pi pi-sign-out' }
-  ];
+  constructor(private userService:UserService, private router:Router) {}
+  isMenuOpen = false;
+  username = this.userService.getUsername();
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  logout() {
+     this.userService.logout();
+      this.router.navigate(['/home']);
+ 
+  }
+
 }

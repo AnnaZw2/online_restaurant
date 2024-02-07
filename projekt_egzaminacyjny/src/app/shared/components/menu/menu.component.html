@@ -1,5 +1,7 @@
-<p-dropdown [options]="menuItems" class="menu-button">
-    <ng-template let-item pTemplate="item">
-      <div>{{item.label}}</div>
-    </ng-template>
-  </p-dropdown>
+<div class="dropdown">
+  <button class="menu-button" (click)="toggleMenu()">{{username}}</button>
+  <div class="dropdown-content" *ngIf="isMenuOpen">
+    <!-- <a href="#">My Quizzes</a> -->
+    <a href="#" (click)="logout()" class="logout">Logout</a>
+  </div>
+</div>
