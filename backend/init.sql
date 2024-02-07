@@ -235,10 +235,15 @@ VALUES
 INSERT INTO question (quizId, question, correctAnswer, option1, option2, option3)
 VALUES
     (16, "What is the primary purpose of a 'for' loop in programming?", "Repeating a block of code a specific number of times", "Declaring a variable", "Breaking out of a loop", "Defining a function"),
-    (16, "Which programming language is often used for web development?", "JavaScript", "Python", "Java", "C++", "Ruby"),
+    (16, "Which programming language is often used for web development?", "JavaScript", "Python", "Java", "C++"),
     (16, "What does 'HTML' stand for?", "Hypertext Markup Language", "High-Level Text Markup Language", "Hyperlink and Text Markup Language", "Home Tool Markup Language"),
     (16, "In object-oriented programming, what is an 'object'?", "An instance of a class", "A loop structure", "A data type", "A variable"),
     (16, "Which data structure follows the Last In, First Out (LIFO) principle?", "Stack", "Queue", "Linked List", "Array");
+        (16, "What does CSS stand for in web development?", "Cascading Style Sheets", "Computer Style Sheets", "Creative Style Sheets", "Coded Style Sheets"),
+    (16, "Which of the following is NOT a programming paradigm?", "Hardware Design", "Functional Programming", "Object-Oriented Programming", "Procedural Programming"),
+    (16, "What is the purpose of SQL?", "To manage and query databases", "To style web pages", "To write server-side code", "To define webpage structure"),
+    (16, "Which programming language is commonly used for data analysis and machine learning?", "Python", "C#", "Ruby", "Swift"),
+    (16, "What does the term 'API' stand for?", "Application Programming Interface", "Automated Programming Integration", "Advanced Programming Interface", "Application Protocol Interface");
 
 -- Quiz 17: Social Sciences Quiz
 INSERT INTO quiz (title, description, likes, creationDate,authorId)
@@ -265,6 +270,11 @@ VALUES
     (18, "How many glasses of water are recommended for daily hydration?", "Eight 8-ounce glasses", "Six 6-ounce glasses", "Ten 10-ounce glasses", "Twelve 12-ounce glasses"),
     (18, "Which mineral is important for maintaining healthy blood pressure?", "Potassium", "Calcium", "Sodium", "Iron"),
     (18, "What is the recommended daily intake of fruits and vegetables?", "At least 5 servings", "At least 2 servings", "At least 10 servings", "At least 3 servings");
+     (18, "What is the main function of protein in the body?", "Building and repairing tissues", "Providing quick energy", "Regulating body temperature", "Storing vitamins"),
+    (18, "Which nutrient is known as the 'building block of life'?", "Protein", "Carbohydrates", "Fats", "Vitamins"),
+    (18, "What is the body's preferred source of fuel during prolonged exercise?", "Carbohydrates", "Proteins", "Fats", "Fiber"),
+    (18, "What is the recommended amount of daily physical activity for adults?", "At least 150 minutes of moderate-intensity exercise", "At least 30 minutes of vigorous-intensity exercise", "At least 60 minutes of moderate-intensity exercise", "At least 90 minutes of vigorous-intensity exercise"),
+    (18, "Which food group is the primary source of dietary fiber?", "Grains", "Proteins", "Dairy", "Fruits and Vegetables");
 
 -- Quiz 19: Political Science Quiz
 INSERT INTO quiz (title, description, likes, creationDate,authorId)
