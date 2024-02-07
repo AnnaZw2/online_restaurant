@@ -7,5 +7,6 @@ export enum QuizCategory {
   Geography = 'Geography',
   Informatics = 'Informatics',
   Politics = 'Politics',
+  History = 'History',
   Other = 'Other',
 }
