@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`QuizService findOne should throw an error for an invalid id format 1`] = `"Invalid ID format"`;
+
+exports[`QuizService findOne should throw an error if quiz does not exist 1`] = `"Invalid ID format"`;

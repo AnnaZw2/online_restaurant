@@ -17,6 +17,8 @@ export class QuizService {
   }
 
   getOne(id: string): Observable<QuizDto> {
+    const quiz = this.http.get<QuizDto>(`${this.quiz_api_url}/${id}`)
+    console.log(quiz);
     return this.http.get<QuizDto>(`${this.quiz_api_url}/${id}`);
   }
 

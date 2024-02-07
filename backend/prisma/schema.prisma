@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model question {
+  id            Int    @id @default(autoincrement())
+  quizId        Int?
+  question      String @db.VarChar(255)
+  correctAnswer String @db.VarChar(255)
+  option1       String @db.VarChar(255)
+  option2       String @db.VarChar(255)
+  option3       String @db.VarChar(255)
+  quiz          quiz?  @relation(fields: [quizId], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "FK_4959a4225f25d923111e54c7cd2")
+
+  @@index([quizId], map: "FK_4959a4225f25d923111e54c7cd2")
+}
+
+model quiz {
+  id           Int        @id @default(autoincrement())
+  title        String     @db.VarChar(255)
+  description  String     @db.VarChar(255)
+  likes        Int        @default(0)
+  authorId     Int?
+  creationDate DateTime   @default(now()) @db.DateTime(6)
+  question     question[]
+  user         user?      @relation(fields: [authorId], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "FK_82f71b10f6749c8e9d3e835668b")
+
+  @@index([authorId], map: "FK_82f71b10f6749c8e9d3e835668b")
+}
+
+model user {
+  id       Int    @id @default(autoincrement())
+  username String @unique(map: "IDX_78a916df40e02a9deb1c4b75ed") @db.VarChar(255)
+  email    String @unique(map: "IDX_e12875dfb3b1d92d7d7c5377e2") @db.VarChar(255)
+  password String @db.VarChar(255)
+  quiz     quiz[]
+}

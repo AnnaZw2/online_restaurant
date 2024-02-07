@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  nestjs-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mysql-db
+
+  mysql-db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: nestjs
+      MYSQL_USER: nestjs
+      MYSQL_PASSWORD: nestjs
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  mysql-test-db:
+      image: mysql:latest
+      environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: nestjs_test  # maybe change this name
+        MYSQL_USER: nestjs
+        MYSQL_PASSWORD: nestjs
+      ports:
+        - "3308:3306"   
+  
+

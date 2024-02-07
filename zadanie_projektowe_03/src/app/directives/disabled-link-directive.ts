@@ -1,5 +1,3 @@
-// src/app/directives/disabled-link.directive.ts
-
 import { Directive, Input, HostBinding } from '@angular/core';
 
 @Directive({

@@ -24,8 +24,9 @@ export class QuizComponent implements OnInit {
     this.quizId = this.activatedRoute.snapshot.params['id'];
     this.quizService.getOne(this.quizId).subscribe((data) => {
       this.quiz = data;
+      console.log(data);
       this.questions = this.shuffleAnswers(data.questions);
-      console.log(this.questions);
+      console.log("qustions",this.questions);
     });
   }
 
