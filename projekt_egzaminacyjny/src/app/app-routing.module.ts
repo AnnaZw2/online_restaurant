@@ -12,7 +12,7 @@ const routes: Routes = [
   {path:"sing-in", component: SignInComponent},
   {path:"sing-up", component: SingUpComponent},
   {path:"create-quiz",component:CreateQuizComponent },
-  {path:"**", component:PageNotFoundComponent}
+  // {path:"**", component:PageNotFoundComponent}
 
 ];
 

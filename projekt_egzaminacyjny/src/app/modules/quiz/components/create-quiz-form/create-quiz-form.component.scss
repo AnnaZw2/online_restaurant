@@ -1,0 +1,81 @@
+.custom-dropdown {
+  position: relative;
+  display: inline-block;
+  width: 200px; /* Adjust width as needed */
+}
+
+.selected-item {
+  border: 1px solid #ccc;
+  padding: 8px;
+  cursor: pointer;
+  border-radius: 4px; /* Rounded border */
+}
+
+.dropdown-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000; /* Ensure dropdown is on top of other elements */
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-top: none;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  max-height: 200px; /* Adjust max-height as needed */
+  overflow-y: auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 4px; /* Rounded border */
+}
+
+.dropdown-list li {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.dropdown-list li:hover {
+  background-color: #f0f0f0;
+}
+
+.selected-item:focus,
+.dropdown-list li:focus {
+  outline: none;
+}
+.error-message {
+  color: red;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+/* Modern input styles */
+input[type="text"],
+textarea {
+  border: 1px solid #ddd; /* Light gray border */
+  border-radius: 4px; /* Rounded border */
+  padding: 8px;
+  margin-bottom: 10px;
+  width: 100%;
+  font-size: 18px;
+  box-sizing: border-box;
+}
+
+button {
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #007bff; /* Blue color */
+  color: #fff; /* White text color */
+}
+
+button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+form {
+  margin: auto;
+  margin-bottom: 30px;
+  max-width: 800px;
+  padding: 40px;
+  border: #ccc solid 1px;
+  border-radius: 10px;
+}

@@ -5,22 +5,28 @@ import { QuizRoutingModule } from './quiz-routing.module';
 import { SharedModule } from "../../shared/shared.module";
 import { QuizQuestionContainerComponent } from './components/quiz-question-container/quiz-question-container.component';
 import { CheckboxModule } from 'primeng/checkbox';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateQuizComponent } from './pages/create-quiz/create-quiz.component';
-
+import { CreateQuizFormComponent } from './components/create-quiz-form/create-quiz-form.component';
+import { ButtonModule } from 'primeng/button';
+import { DropdownModule } from 'primeng/dropdown';
 
 @NgModule({
     declarations: [
         QuizComponent,
         QuizQuestionContainerComponent,
-        CreateQuizComponent
+        CreateQuizComponent,
+        CreateQuizFormComponent
     ],
     imports: [
         CommonModule,
         QuizRoutingModule,
         SharedModule,
         CheckboxModule,
-        FormsModule
+        FormsModule,
+        ReactiveFormsModule,
+        ButtonModule,
+        DropdownModule
     ]
 })
 export class QuizModule { }
