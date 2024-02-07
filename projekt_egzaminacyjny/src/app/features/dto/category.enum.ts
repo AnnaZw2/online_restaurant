@@ -7,6 +7,7 @@ export enum CategoryEnum {
     Geography = 'Geography',
     Informatics = 'Informatics',
     Politics = 'Politics',
+    History = 'History',
     Other = 'Other',
   }
   
