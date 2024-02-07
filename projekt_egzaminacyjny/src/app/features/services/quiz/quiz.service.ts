@@ -23,6 +23,7 @@ export class QuizService {
   }
 
   create(quiz: CreateQuizDto): Observable<CreateQuizDto> {
+    console.log("quizservice",quiz);
     return this.http.post<CreateQuizDto>(this.quiz_api_url, quiz);
   }
 }

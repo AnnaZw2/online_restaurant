@@ -10,6 +10,8 @@ import { CreateQuizComponent } from './pages/create-quiz/create-quiz.component';
 import { CreateQuizFormComponent } from './components/create-quiz-form/create-quiz-form.component';
 import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
+import { HomeModule } from '../home/home.module';
+import { FeaturesModule } from 'src/app/features/features.module';
 
 @NgModule({
     declarations: [
@@ -26,7 +28,8 @@ import { DropdownModule } from 'primeng/dropdown';
         FormsModule,
         ReactiveFormsModule,
         ButtonModule,
-        DropdownModule
+        DropdownModule,
+        FeaturesModule
     ]
 })
 export class QuizModule { }

@@ -35,6 +35,7 @@ export class QuizController {
     type: CreateQuizDto,
   })
   create(@Body() createQuizDto: CreateQuizDto) {
+    console.log('create quiz');
     return this.quizService.create(createQuizDto);
   }
 
@@ -50,7 +51,6 @@ export class QuizController {
   })
   findAll() {
     console.log('find all');
-    console.log(this.quizService.findAll());
     return this.quizService.findAll();
   }
 

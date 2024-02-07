@@ -1,21 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { catchError, finalize, of, tap } from 'rxjs';
 import { CategoryEnum } from 'src/app/features/dto/category.enum';
-import { QuizDto } from 'src/app/features/dto/quiz.dto';
+import { CreateQuizDto } from 'src/app/features/dto/create-quiz.dto';
+import { QuizService } from 'src/app/features/services/quiz/quiz.service';
+import { UserService } from 'src/app/features/services/user/user.service';
 import { notEmptyStringValidator } from 'src/app/shared/validators/not-empty-string-validator'
+
+
 @Component({
   selector: 'app-create-quiz-form',
   templateUrl: './create-quiz-form.component.html',
   styleUrls: ['./create-quiz-form.component.scss']
 })
 export class CreateQuizFormComponent implements OnInit {
+ 
   quizForm!: FormGroup;
   categories = Object.values(CategoryEnum);
-
   showDropdown = false;
   selectedCategory = '';
   submitted = false; 
-  constructor(private formBuilder: FormBuilder) { }
+  currentUser = this.userService.getCurrentUser();
+
+  constructor(private formBuilder: FormBuilder, private userService:UserService,private quizService: QuizService) { }
 
   ngOnInit() {
     this.quizForm = this.formBuilder.group({
@@ -51,10 +58,44 @@ export class CreateQuizFormComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    if (this.quizForm.valid) {
-      const quizData: QuizDto = this.quizForm.value;
-      console.log(quizData); // Do whatever you want with the form data, like sending it to an API
+    if (this.quizForm.valid && this.currentUser) {
+      const quizData: CreateQuizDto = {
+
+        title: this.quizForm.value.title,
+        description: this.quizForm.value.description,
+        likes: 0,
+        creationDate: new Date(),
+        questions: this.quizForm.value.questions,
+        authorUsername: this.currentUser.username,
+        authorEmail: this.currentUser.email,
+        quizCreationDate: new Date(),
+        category: this.quizForm.value.category
+      };
+      
+
+      this.quizService.create(quizData)
+  .pipe(
+    tap((createdQuiz) => {
+      // Handle success, if needed
+      console.log('Quiz created successfully:', createdQuiz);
+    }),
+    catchError((error) => {
+      // Handle error
+      console.error('Error creating quiz:', error);
+      // Optionally return a default value or throw the error again
+      return of(null); // Return a default value
+      // return throwError(error); // Throw the error again
+    }),
+    finalize(() => {
+      // This block will always execute, regardless of success or error
+      console.log('Quiz creation request completed.');
+    })
+  )
+  .subscribe();
+   
+      console.log(quizData); // For testing
     } else {
+      console.log('Form is invalid');
       // Handle form validation errors
     }
   }

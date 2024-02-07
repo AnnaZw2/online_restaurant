@@ -21,6 +21,8 @@ export class QuizService {
 
   create(createQuizDto: CreateQuizDto) {
     const newQuiz = this.quizRepository.create(createQuizDto);
+    console.log('newQuiz', newQuiz);
+
     return this.quizRepository.save(newQuiz);
   }
 

@@ -9,10 +9,8 @@ export interface QuizDto {
     readonly creationDate: Date;
     readonly questions: CreateQuestionDto[];
     readonly author : {
-        readonly id: string;
         readonly username: string;
         readonly email: string;
-        readonly password: string;
         readonly creationDate: Date;
     }
     readonly category: CategoryEnum;

@@ -54,6 +54,24 @@ export class CreateQuizDto {
   @IsEnum(QuizCategory, { message: 'Invalid category' })
   category: QuizCategory;
 
+  @ApiProperty({
+    description: 'Author Email',
+    type: String,
+    example: 'john@example.com',
+  })
+  @IsString()
+  @IsNotEmpty({ message: 'Author email is required' })
+  authorEmail: string;
+
+  @ApiProperty({
+    description: 'Author Creation Date',
+    type: Date,
+    example: new Date(),
+    default: new Date(),
+  })
+  @IsDate()
+  quizCreationDate: Date;
+
   constructor() {
     if (!this.creationDate) {
       this.creationDate = new Date();
