@@ -1,6 +1,7 @@
 import { PartialType } from '@nestjs/mapped-types';
 import { CreateQuizDto } from './create-quiz.dto';
 import { ApiProperty } from '@nestjs/swagger';
+import { QuizCategory } from '../entities/category.enum';
 
 export class UpdateQuizDto extends PartialType(CreateQuizDto) {
   @ApiProperty({
@@ -26,4 +27,11 @@ export class UpdateQuizDto extends PartialType(CreateQuizDto) {
     required: false,
   })
   likes?: number;
+
+  @ApiProperty({
+    description: 'Category',
+    enum: QuizCategory,
+    example: QuizCategory.Science,
+  })
+  category: QuizCategory;
 }

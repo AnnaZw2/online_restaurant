@@ -27,6 +27,7 @@ CREATE TABLE IF NOT EXISTS quiz (
     likes INT DEFAULT 0,
     creationDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     authorId INT,
+    category VARCHAR(255) NOT NULL,
     FOREIGN KEY (authorId) REFERENCES user(id)
 );
 
@@ -44,23 +45,23 @@ CREATE TABLE IF NOT EXISTS question (
 );
 
 -- Insert data into the quizzes and questions tables with different dates
-INSERT INTO quiz (title, description, likes, creationDate,authorId)
+INSERT INTO quiz (title, description, likes, creationDate, authorId, category)
 VALUES
-    ("Spanish Vocabulary Quiz 1", "Test your knowledge of basic Spanish words", 12, '2024-01-05 08:30:00',2),
-    ("Spanish Phrases Quiz", "Identify common Spanish phrases", 52, '2024-01-06 14:45:00',2),
-    ("Family Terms Quiz", "Translate family-related terms to Spanish", 7, '2024-01-07 10:20:00',2),
-    ("Colors in Spanish", "Guess the correct Spanish names for colors", 25, '2024-01-08 18:00:00',1),
-    ("Spanish Numbers Quiz", "Counting in Spanish", 10, '2024-01-09 12:00:00',1),
-    ("Physics Basics Quiz", "Test your knowledge of fundamental physics concepts", 0, '2024-01-10 09:30:00',4),
-    ("Chemistry Elements Quiz", "Identify elements and their symbols", 4, '2024-01-11 16:15:00',4),
-    ("Biology Anatomy Quiz", "Explore human anatomy and biological terms", 32, '2024-01-12 11:45:00',5),
-    ("Astronomy Facts Quiz", "Discover interesting facts about the universe and celestial bodies", 0, '2024-01-13 14:00:00',1),
-    ("Earth Science Quiz", "Learn about the Earth's geology and atmosphere", 13, '2024-01-14 07:00:00',2),
-    ("Medical Terminology Quiz", "Test your understanding of medical terms and terminology", 0, '2024-01-15 16:30:00',2),
-    ("Scientific Discoveries Quiz", "Explore major scientific breakthroughs and discoveries", 0, '2024-01-16 19:20:00',3),
-    ("Mathematics Trivia Quiz", "Challenge yourself with interesting math facts", 5, '2024-01-17 10:10:00',4),
-    ("Environmental Science Quiz", "Understand environmental issues and concepts", 0, '2024-01-18 15:40:00',5),
-    ("Technology Innovations Quiz", "Explore advancements in science and technology", 0, '2024-01-19 08:45:00',5);
+    ("Spanish Vocabulary Quiz 1", "Test your knowledge of basic Spanish words", 12, '2024-01-05 08:30:00', 2, 'Languages'),
+    ("Spanish Phrases Quiz", "Identify common Spanish phrases", 52, '2024-01-06 14:45:00', 2, 'Languages'),
+    ("Family Terms Quiz", "Translate family-related terms to Spanish", 7, '2024-01-07 10:20:00', 2, 'Languages'),
+    ("Colors in Spanish", "Guess the correct Spanish names for colors", 25, '2024-01-08 18:00:00', 1, 'Languages'),
+    ("Spanish Numbers Quiz", "Counting in Spanish", 10, '2024-01-09 12:00:00', 1, 'Languages'),
+    ("Physics Basics Quiz", "Test your knowledge of fundamental physics concepts", 0, '2024-01-10 09:30:00', 4, 'Science'),
+    ("Chemistry Elements Quiz", "Identify elements and their symbols", 4, '2024-01-11 16:15:00', 4, 'Science'),
+    ("Biology Anatomy Quiz", "Explore human anatomy and biological terms", 32, '2024-01-12 11:45:00', 5, 'Science'),
+    ("Astronomy Facts Quiz", "Discover interesting facts about the universe and celestial bodies", 0, '2024-01-13 14:00:00', 1, 'Science'),
+    ("Earth Science Quiz", "Learn about the Earth's geology and atmosphere", 13, '2024-01-14 07:00:00', 2, 'Science'),
+    ("Medical Terminology Quiz", "Test your understanding of medical terms and terminology", 0, '2024-01-15 16:30:00', 2, 'Science'),
+    ("Scientific Discoveries Quiz", "Explore major scientific breakthroughs and discoveries", 0, '2024-01-16 19:20:00', 3, 'Science'),
+    ("Mathematics Trivia Quiz", "Challenge yourself with interesting math facts", 5, '2024-01-17 10:10:00', 4, 'Science'),
+    ("Environmental Science Quiz", "Understand environmental issues and concepts", 0, '2024-01-18 15:40:00', 5, 'Science'),
+    ("Technology Innovations Quiz", "Explore advancements in science and technology", 0, '2024-01-19 08:45:00', 5, 'Science');
 
 -- Quiz 1: Spanish Vocabulary Quiz 1
 INSERT INTO question (quizId, question, correctAnswer, option1, option2, option3)
@@ -159,9 +160,9 @@ VALUES
     (10, "What is the Richter scale used to measure?", "Earthquake Magnitude", "Temperature", "Wind Speed", "Barometric Pressure");
 
 -- Quiz 11: Mathematics Basics Quiz
-INSERT INTO quiz (title, description, likes, creationDate,authorId)
+INSERT INTO quiz (title, description, likes, creationDate,authorId,category)
 VALUES
-    ("Basic Arithmetic Quiz", "Test your knowledge of addition, subtraction, multiplication, and division", 8, '2024-01-20 09:00:00',3);
+    ("Basic Arithmetic Quiz", "Test your knowledge of addition, subtraction, multiplication, and division", 8, '2024-01-20 09:00:00',3,"Science");
 
 
 INSERT INTO question (quizId, question, correctAnswer, option1, option2, option3)
@@ -173,9 +174,10 @@ VALUES
     (11, "What is the result of 3 squared?", "9", "6", "12", "3");
 
 -- Quiz 12: Literature and Language Quiz
-INSERT INTO quiz (title, description, likes, creationDate,authorId)
+
+INSERT INTO quiz (title, description, likes, creationDate, authorId, category)
 VALUES
-    ("Classic Literature Quiz", "Test your knowledge of classic literature and language", 15, '2024-01-21 14:30:00',4);
+    ("Classic Literature Quiz", "Test your knowledge of classic literature and language", 15, '2024-01-21 14:30:00', 4, 'Languages');
 
 
 INSERT INTO question (quizId, question, correctAnswer, option1, option2, option3)
@@ -187,9 +189,9 @@ VALUES
     (12, "Which Shakespearean play features the character Othello?", "Othello", "Macbeth", "Hamlet", "Romeo and Juliet");
 
 -- Quiz 13: History and Civilization Quiz
-INSERT INTO quiz (title, description, likes, creationDate,authorId)
+INSERT INTO quiz (title, description, likes, creationDate, authorId, category)
 VALUES
-    ("Ancient Civilizations Quiz", "Explore the history of ancient civilizations", 12, '2024-01-22 11:15:00',4);
+    ("Ancient Civilizations Quiz", "Explore the history of ancient civilizations", 12, '2024-01-22 11:15:00', 4, 'History');
 
 
 INSERT INTO question (quizId, question, correctAnswer, option1, option2, option3)
@@ -201,9 +203,10 @@ VALUES
     (13, "Which ancient Greek philosopher is known for his teachings on ethics?", "Socrates", "Plato", "Aristotle", "Heraclitus");
 
 -- Quiz 14: Geography and World Capitals Quiz
-INSERT INTO quiz (title, description, likes, creationDate,authorId)
+-- Quiz 14: Geography and World Capitals Quiz
+INSERT INTO quiz (title, description, likes, creationDate, authorId, category)
 VALUES
-    ("World Capitals Quiz", "Test your knowledge of world capitals and geography", 18, '2024-01-23 16:45:00',5);
+    ("World Capitals Quiz", "Test your knowledge of world capitals and geography", 18, '2024-01-23 16:45:00', 5, 'Geography');
 
 
 INSERT INTO question (quizId, question, correctAnswer, option1, option2, option3)
@@ -215,9 +218,9 @@ VALUES
     (14, "What is the capital of Brazil?", "Brasília", "Rio de Janeiro", "São Paulo", "Buenos Aires");
 
 -- Quiz 15: Art and Music Quiz
-INSERT INTO quiz (title, description, likes, creationDate,authorId)
+INSERT INTO quiz (title, description, likes, creationDate,authorId,category)
 VALUES
-    ("Famous Paintings Quiz", "Identify famous paintings and artists", 20, '2024-01-24 10:30:00',5);
+    ("Famous Paintings Quiz", "Identify famous paintings and artists", 20, '2024-01-24 10:30:00',5,"Art");
 
 INSERT INTO question (quizId, question, correctAnswer, option1, option2, option3)
 VALUES
@@ -228,9 +231,9 @@ VALUES
     (15, "In which period did the Baroque style dominate art and music?", "17th and 18th centuries", "15th and 16th centuries", "19th and 20th centuries", "Ancient times");
 
 -- Quiz 16: Computer Science Basics Quiz
-INSERT INTO quiz (title, description, likes, creationDate,authorId)
+INSERT INTO quiz (title, description, likes, creationDate,authorId,category)
 VALUES
-    ("Programming Concepts Quiz", "Test your knowledge of programming and computer science concepts", 25, '2024-01-25 18:15:00',2);
+    ("Programming Concepts Quiz", "Test your knowledge of programming and computer science concepts", 25, '2024-01-25 18:15:00',2,"Informatics");
 
 INSERT INTO question (quizId, question, correctAnswer, option1, option2, option3)
 VALUES
@@ -246,9 +249,9 @@ VALUES
     (16, "What does the term 'API' stand for?", "Application Programming Interface", "Automated Programming Integration", "Advanced Programming Interface", "Application Protocol Interface");
 
 -- Quiz 17: Social Sciences Quiz
-INSERT INTO quiz (title, description, likes, creationDate,authorId)
+INSERT INTO quiz (title, description, likes, creationDate,authorId,category)
 VALUES
-    ("Sociology and Psychology Quiz", "Explore concepts in sociology and psychology", 14, '2024-01-26 07:45:00',4);
+    ("Sociology and Psychology Quiz", "Explore concepts in sociology and psychology", 14, '2024-01-26 07:45:00',4,"Science");
 
 INSERT INTO question (quizId, question, correctAnswer, option1, option2, option3)
 VALUES
@@ -259,9 +262,9 @@ VALUES
     (17, "What is the 'Stanford prison experiment' about?", "Examining the psychological effects of perceived power", "Studying language acquisition in children", "Analyzing sleep patterns in adults", "Observing the effects of diet on behavior");
 
 -- Quiz 18: Health and Nutrition Quiz
-INSERT INTO quiz (title, description, likes, creationDate,authorId)
+INSERT INTO quiz (title, description, likes, creationDate,authorId,category)
 VALUES
-    ("Nutrition and Wellness Quiz", "Test your knowledge of health, nutrition, and wellness", 11, '2024-01-27 14:00:00',2);
+    ("Nutrition and Wellness Quiz", "Test your knowledge of health, nutrition, and wellness", 11, '2024-01-27 14:00:00',2,"Biology");
 
 INSERT INTO question (quizId, question, correctAnswer, option1, option2, option3)
 VALUES
@@ -277,9 +280,9 @@ VALUES
     (18, "Which food group is the primary source of dietary fiber?", "Grains", "Proteins", "Dairy", "Fruits and Vegetables");
 
 -- Quiz 19: Political Science Quiz
-INSERT INTO quiz (title, description, likes, creationDate,authorId)
+INSERT INTO quiz (title, description, likes, creationDate,authorId,category)
 VALUES
-    ("Political Systems Quiz", "Explore concepts in political science and government", 16, '2024-01-28 09:30:00',3);
+    ("Political Systems Quiz", "Explore concepts in political science and government", 16, '2024-01-28 09:30:00',3,"Politics");
 
 INSERT INTO question (quizId, question, correctAnswer, option1, option2, option3)
 VALUES

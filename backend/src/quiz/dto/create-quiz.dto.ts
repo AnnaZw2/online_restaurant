@@ -1,5 +1,12 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString, IsNotEmpty, IsNumber, IsDate } from 'class-validator';
+import {
+  IsString,
+  IsNotEmpty,
+  IsNumber,
+  IsDate,
+  IsEnum,
+} from 'class-validator';
+import { QuizCategory } from '../entities/category.enum';
 export class CreateQuizDto {
   @ApiProperty({
     description: 'Title',
@@ -38,6 +45,14 @@ export class CreateQuizDto {
   })
   @IsDate()
   creationDate: Date;
+
+  @ApiProperty({
+    description: 'Category',
+    enum: QuizCategory,
+    example: QuizCategory.Science,
+  })
+  @IsEnum(QuizCategory, { message: 'Invalid category' })
+  category: QuizCategory;
 
   constructor() {
     if (!this.creationDate) {

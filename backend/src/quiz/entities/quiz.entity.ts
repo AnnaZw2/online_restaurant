@@ -8,6 +8,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Question } from './question.entity';
+import { QuizCategory } from './category.enum';
 
 @Entity()
 export class Quiz {
@@ -25,6 +26,9 @@ export class Quiz {
 
   @CreateDateColumn()
   creationDate: Date;
+
+  @Column({ type: 'enum', enum: QuizCategory, default: QuizCategory.Other })
+  category: QuizCategory;
 
   @ManyToOne(() => User, (user) => user.quizzes)
   author: User;
