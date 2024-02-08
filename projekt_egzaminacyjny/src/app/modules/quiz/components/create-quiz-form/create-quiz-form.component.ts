@@ -11,10 +11,10 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
 @Component({
   selector: 'app-create-quiz-form',
   templateUrl: './create-quiz-form.component.html',
-  styleUrls: ['./create-quiz-form.component.scss']
+  styleUrls: ['./create-quiz-form.component.scss'],
 })
 export class CreateQuizFormComponent implements OnInit {
-   existingQuiz: CreateQuizDto | null = null;
+  existingQuiz: CreateQuizDto | null = null;
   quizForm!: FormGroup;
   categories = Object.values(CategoryEnum);
   showDropdown = false;
@@ -25,28 +25,42 @@ export class CreateQuizFormComponent implements OnInit {
   showModal = false;
 
   isEdit = false;
-  constructor(private formBuilder: FormBuilder, private userService: UserService, private quizService: QuizService,    private activatedRoute: ActivatedRoute,private router: Router) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private userService: UserService,
+    private quizService: QuizService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
+  ) {}
   ngOnInit() {
-    this.activatedRoute.params.subscribe(params => {
-     
+    this.activatedRoute.params.subscribe((params) => {
       this.isEdit = this.activatedRoute.snapshot.queryParams['edit'] === 'true';
       if (this.isEdit) {
         this.quizId = params['quizId'];
-        console.log("id",this.quizId)
+        console.log('id', this.quizId);
         // Fetch quiz data by quizId
-        this.quizService.getOne(this.quizId).subscribe((data) => {
-          this.existingQuiz = data;
-          console.log("id",this.quizId)
-          console.log(data);
-          this.initializeForm();
-        });
+        this.quizService.getOne(this.quizId).subscribe(
+          (data) => {
+            this.existingQuiz = data;
+
+            this.initializeForm();
+          },
+          (error) => {
+            console.error('Error fetching quiz:', error);
+          }
+        );
       } else {
-        this.quizService.getOne(this.quizId).subscribe((data) => {
-          this.existingQuiz = data;
-          console.log(data);
-    
-          console.log("qustions", this.questions);
-        });
+        this.quizService.getOne(this.quizId).subscribe(
+          (data) => {
+            this.existingQuiz = data;
+            console.log(data);
+
+            console.log('qustions', this.questions);
+          },
+          (error) => {
+            console.error('Error fetching quiz:', error);
+          }
+        );
       }
       this.initializeForm();
     });
@@ -55,10 +69,18 @@ export class CreateQuizFormComponent implements OnInit {
   initializeForm() {
     if (this.existingQuiz) {
       this.quizForm = this.formBuilder.group({
-        title: [this.existingQuiz.title, [Validators.required, notEmptyStringValidator]],
-        description: [this.existingQuiz.description, [Validators.required, notEmptyStringValidator]],
+        title: [
+          this.existingQuiz.title,
+          [Validators.required, notEmptyStringValidator],
+        ],
+        description: [
+          this.existingQuiz.description,
+          [Validators.required, notEmptyStringValidator],
+        ],
         category: [this.existingQuiz.category, Validators.required],
-        questions: this.formBuilder.array(this.mapQuestions(this.existingQuiz.questions))
+        questions: this.formBuilder.array(
+          this.mapQuestions(this.existingQuiz.questions)
+        ),
       });
     } else {
       this.quizForm = this.formBuilder.group({
@@ -68,20 +90,35 @@ export class CreateQuizFormComponent implements OnInit {
         questions: this.formBuilder.array([
           this.createQuestionFormGroup(),
           this.createQuestionFormGroup(),
-          this.createQuestionFormGroup()
-        ])
+          this.createQuestionFormGroup(),
+        ]),
       });
     }
   }
 
   mapQuestions(questions: any[]) {
-    return questions.map(question => {
+    return questions.map((question) => {
       return this.formBuilder.group({
-        question: [question.question, [Validators.required, notEmptyStringValidator]],
-        correctAnswer: [question.correctAnswer, [Validators.required, notEmptyStringValidator]],
-        option1: [question.option1, [Validators.required, notEmptyStringValidator]],
-        option2: [question.option2, [Validators.required, notEmptyStringValidator]],
-        option3: [question.option3, [Validators.required, notEmptyStringValidator]]
+        question: [
+          question.question,
+          [Validators.required, notEmptyStringValidator],
+        ],
+        correctAnswer: [
+          question.correctAnswer,
+          [Validators.required, notEmptyStringValidator],
+        ],
+        option1: [
+          question.option1,
+          [Validators.required, notEmptyStringValidator],
+        ],
+        option2: [
+          question.option2,
+          [Validators.required, notEmptyStringValidator],
+        ],
+        option3: [
+          question.option3,
+          [Validators.required, notEmptyStringValidator],
+        ],
       });
     });
   }
@@ -92,7 +129,7 @@ export class CreateQuizFormComponent implements OnInit {
       correctAnswer: ['', [Validators.required, notEmptyStringValidator]],
       option1: ['', [Validators.required, notEmptyStringValidator]],
       option2: ['', [Validators.required, notEmptyStringValidator]],
-      option3: ['', [Validators.required, notEmptyStringValidator]]
+      option3: ['', [Validators.required, notEmptyStringValidator]],
     });
   }
 
@@ -103,7 +140,6 @@ export class CreateQuizFormComponent implements OnInit {
   addQuestion() {
     this.questions.push(this.createQuestionFormGroup());
   }
-
 
   onSubmit() {
     this.submitted = true;
@@ -117,10 +153,11 @@ export class CreateQuizFormComponent implements OnInit {
         authorUsername: this.currentUser.username,
         authorEmail: this.currentUser.email,
         quizCreationDate: new Date(),
-        category: this.quizForm.value.category
+        category: this.quizForm.value.category,
       };
 
-      this.quizService.create(quizData)
+      this.quizService
+        .create(quizData)
         .pipe(
           tap((createdQuiz) => {
             console.log('Quiz created successfully:', createdQuiz);
@@ -135,15 +172,11 @@ export class CreateQuizFormComponent implements OnInit {
         )
         .subscribe();
 
-        if(this.existingQuiz) {
-          this.quizService.remove(this.quizId).subscribe(
-          
-            (error) => {
-              console.error('Error occurred while removing quiz:', error);
-          
-            }
-          );
-        }
+      if (this.existingQuiz) {
+        this.quizService.remove(this.quizId).subscribe((error) => {
+          console.error('Error occurred while removing quiz:', error);
+        });
+      }
     } else {
       console.log('Form is invalid');
     }
@@ -155,7 +188,6 @@ export class CreateQuizFormComponent implements OnInit {
 
   redirectToHome() {
     this.userService.navigateToHome();
-  
   }
 
   goBackToQuiz() {
