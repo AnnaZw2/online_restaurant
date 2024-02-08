@@ -1,35 +1,59 @@
 .filter-option {
     display: flex;
     align-items: center;
-  
+
     p {
-      margin-right: 10px;
-      margin-bottom: 0; /* Reset margin to avoid extra space */
+        margin-right: 10px;
+        margin-bottom: 0; 
     }
-  
+
     select,
     input[type="text"],
     input[type="checkbox"] {
-      height: 40px;
-      margin-right: 10px; /* Add margin between filter elements */
-      padding: 8px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
+        height: 40px;
+        margin-right: 10px; 
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
 
-  
-      &:hover {
-        border-color: #007bff;
-      }
-  
-    
-    
+        &:hover {
+            border-color: #007bff;
+        }
     }
-  
+
+    .sorting-dropdown {
+        display: flex;
+        align-items: center;
+        margin-left: 10px;
+
+        .sort-by-container {
+            display: flex;
+            align-items: center;
+        }
+    }
+
     /* Reset margin for last-child to avoid extra space */
     select:last-child,
     input[type="text"]:last-child,
     input[type="checkbox"]:last-child {
-      margin-right: 0;
+        margin-right: 0;
     }
-  }
-  
+}
+
+@media (max-width: 768px) {
+    .filter-option {
+        flex-direction: column; /* Stack items vertically on smaller screens */
+    }
+
+    .filter-option p {
+        margin-bottom: 10px;
+    }
+
+    .filter-option select,
+    .filter-option input[type="text"],
+    .filter-option input[type="checkbox"] {
+        width: 100%; /* Make input elements full width on smaller screens */
+        margin-right: 0; /* Remove right margin to avoid overflow */
+        margin-bottom: 10px; /* Add margin below elements for spacing */
+    }
+}
