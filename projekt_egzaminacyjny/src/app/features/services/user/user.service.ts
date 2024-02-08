@@ -47,7 +47,7 @@ export class UserService {
         }),
         catchError((error) => {
           // console.error('Login failed:', error);
-          return throwError('Invalid data');
+          return throwError('Invalid data',error);
         })
       );
   }

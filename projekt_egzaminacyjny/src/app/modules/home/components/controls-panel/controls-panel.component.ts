@@ -13,6 +13,7 @@ export class ControlsPanelComponent {
   showOnlyWithLikes = false;
   sortBy = 'default';
   categoryOptions: CategoryEnum[] = Object.values(CategoryEnum);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @Output() filtersApplied: EventEmitter<any> = new EventEmitter<any>();
   @Output() filtersCleared: EventEmitter<void> = new EventEmitter<void>();
 
@@ -29,6 +30,7 @@ export class ControlsPanelComponent {
     });
 console.log("sort!!!!!!")
   }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   toggleShowOnlyWithLikes(event: any) {
 
     this.showOnlyWithLikes = event.target?.checked || false;

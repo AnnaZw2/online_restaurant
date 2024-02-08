@@ -16,6 +16,6 @@ export class QuizQuestionContainerComponent {
     question.answers.forEach((answer: Answer) => {
       answer.selected = false; // Reset all other answers
     });
-    selectedAnswer.selected = true; // Set the selected answer
+    selectedAnswer.selected = true; 
   }
 }

@@ -20,7 +20,6 @@ export class QuizComponent implements OnInit {
   quiz: QuizDto | null = null;
   questions: any = [];
   submitted = false;
-
   displayModal = false;
  
   ngOnInit(): void {

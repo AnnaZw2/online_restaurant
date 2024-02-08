@@ -1,3 +1,4 @@
+import { CreateQuestionDto } from './../../../../features/dto/create-question.dto';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { catchError, finalize, of, tap } from 'rxjs';
@@ -6,7 +7,7 @@ import { CreateQuizDto } from 'src/app/features/dto/create-quiz.dto';
 import { QuizService } from 'src/app/features/services/quiz/quiz.service';
 import { UserService } from 'src/app/features/services/user/user.service';
 import { notEmptyStringValidator } from 'src/app/shared/validators/not-empty-string-validator';
-import { ActivatedRoute, Route, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-quiz-form',
@@ -96,7 +97,7 @@ export class CreateQuizFormComponent implements OnInit {
     }
   }
 
-  mapQuestions(questions: any[]) {
+  mapQuestions(questions: CreateQuestionDto[]) {
     return questions.map((question) => {
       return this.formBuilder.group({
         question: [
