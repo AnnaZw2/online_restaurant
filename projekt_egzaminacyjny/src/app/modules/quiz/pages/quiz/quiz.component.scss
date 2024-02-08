@@ -42,7 +42,8 @@
   
   button {
     margin-left: 10px;
-    background-color: $secondary_color;
+    color:$secondary_color ;
+    background-color: white;
     border: 1px solid $secondary_color;
     border-radius: 20px; 
     transition: border 0.3s ease;
@@ -57,4 +58,11 @@
   .retry{
     background-color:white;
     color: $secondary_color;
+  }
+
+  .button-group {
+    display: flex;
+    gap: 10px; 
+    margin-bottom: 10px;
+  
   }

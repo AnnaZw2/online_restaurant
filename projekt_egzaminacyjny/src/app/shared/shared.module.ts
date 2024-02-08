@@ -6,7 +6,8 @@ import { BrandingComponent } from './components/branding/branding.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MenuComponent } from './components/menu/menu.component';
-import {DropdownModule} from 'primeng/dropdown';
+import { DropdownModule } from 'primeng/dropdown';
+
 @NgModule({
   declarations: [
     SingInButtonComponent,
@@ -14,9 +15,15 @@ import {DropdownModule} from 'primeng/dropdown';
     BrandingComponent,
     HeaderComponent,
     FooterComponent,
-    MenuComponent
+    MenuComponent,
   ],
-  imports: [CommonModule,DropdownModule],
-  exports: [SingInButtonComponent, SingUpButtonComponent, BrandingComponent,HeaderComponent,FooterComponent],
+  imports: [CommonModule, DropdownModule],
+  exports: [
+    SingInButtonComponent,
+    SingUpButtonComponent,
+    BrandingComponent,
+    HeaderComponent,
+    FooterComponent,
+  ],
 })
 export class SharedModule {}

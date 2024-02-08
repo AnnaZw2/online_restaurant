@@ -22,10 +22,10 @@
   list-style-type: none;
   margin: 0;
   padding: 0;
-  max-height: 221px; /* Adjust max-height as needed */
+  max-height: 221px; 
   overflow-y: auto;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 4px; /* Rounded border */
+  border-radius: 4px; 
 }
 
 .dropdown-list li {
@@ -46,11 +46,12 @@
   margin-top: 0;
   margin-bottom: 1rem;
 }
-/* Modern input styles */
+
+
 input[type="text"],
 textarea {
-  border: 1px solid #ddd; /* Light gray border */
-  border-radius: 4px; /* Rounded border */
+  border: 1px solid #ddd;
+  border-radius: 4px; 
   padding: 8px;
   margin-bottom: 10px;
   width: 100%;
@@ -63,12 +64,12 @@ button {
   border-radius: 4px;
   padding: 10px 20px;
   cursor: pointer;
-  background-color: #007bff; /* Blue color */
-  color: #fff; /* White text color */
+  background-color: #007bff;
+  color: #fff; 
 }
 
 button:hover {
-  background-color: #0056b3; /* Darker blue on hover */
+  background-color: #0056b3; 
 }
 
 form {
@@ -79,3 +80,7 @@ form {
   border: #ccc solid 1px;
   border-radius: 10px;
 }
+
+.submit-button {
+    margin-top: 10px; 
+  }
