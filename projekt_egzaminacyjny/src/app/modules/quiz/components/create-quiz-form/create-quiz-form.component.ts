@@ -168,15 +168,17 @@ export class CreateQuizFormComponent implements OnInit {
           }),
           finalize(() => {
             console.log('Quiz creation request completed.');
-            this.router.navigate(['/home']);
+            if(this.existingQuiz!==null){
+              this.router.navigate(['/home']);
+
+            }
           })
         )
         .subscribe();
 
       if (this.existingQuiz) {
-        this.quizService.remove(this.quizId).subscribe((error) => {
-          console.error('Error occurred while removing quiz:', error);
-        });
+        this.quizService.remove(this.quizId).subscribe();
+        
       }
     } else {
       console.log('Form is invalid');
