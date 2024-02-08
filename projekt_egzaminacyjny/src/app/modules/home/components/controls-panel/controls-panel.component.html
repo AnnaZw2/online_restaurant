@@ -1,6 +1,6 @@
 
 <!-- eslint-disable @angular-eslint/template/elements-content -->
-<button (click)="navigateToCreateQuiz()" pButton type="button" label="Create New Quiz" class=""></button>
+<button (click)="navigateToCreateQuiz()" pButton type="button" label="Create New Quiz" class="p-button-rounded p-button-outlined create-quiz-button"></button>
 <div class="filter-option">
     <p>Filter by Category:</p>
     <select [(ngModel)]="filterByCategory" (change)="applyFilters()">
@@ -11,5 +11,5 @@
     <input type="text" [(ngModel)]="filterByTitle" (input)="applyFilters()">
 
     <p>Show only with likes</p>
-    <input type="checkbox" (change)="toggleShowOnlyWithLikes($event)">
+     <input type="checkbox" (change)="toggleShowOnlyWithLikes($event)">
 </div>

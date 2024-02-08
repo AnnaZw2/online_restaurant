@@ -1,0 +1,35 @@
+.filter-option {
+    display: flex;
+    align-items: center;
+  
+    p {
+      margin-right: 10px;
+      margin-bottom: 0; /* Reset margin to avoid extra space */
+    }
+  
+    select,
+    input[type="text"],
+    input[type="checkbox"] {
+      height: 40px;
+      margin-right: 10px; /* Add margin between filter elements */
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+
+  
+      &:hover {
+        border-color: #007bff;
+      }
+  
+    
+    
+    }
+  
+    /* Reset margin for last-child to avoid extra space */
+    select:last-child,
+    input[type="text"]:last-child,
+    input[type="checkbox"]:last-child {
+      margin-right: 0;
+    }
+  }
+  

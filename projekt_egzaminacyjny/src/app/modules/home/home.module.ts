@@ -10,11 +10,12 @@ import { CoreModule } from 'src/app/core/core.module';
 import { ButtonModule } from 'primeng/button';
 import { ControlsPanelComponent } from './components/controls-panel/controls-panel.component';
 import { PaginatorModule } from 'primeng/paginator';
+import { CheckboxModule } from 'primeng/checkbox';
 
 @NgModule({
   declarations: [HomeComponent, DisplayAllQuizesComponent, ControlsPanelComponent ],
   providers: [QuizService],
-  imports: [CommonModule, SharedModule, QuizRoutingModule, BrowserModule,CoreModule,  ButtonModule,PaginatorModule],
+  imports: [CommonModule, SharedModule, QuizRoutingModule, BrowserModule,CoreModule,  ButtonModule,PaginatorModule,CheckboxModule],
   exports: [HomeComponent],
 })
 export class HomeModule {}
