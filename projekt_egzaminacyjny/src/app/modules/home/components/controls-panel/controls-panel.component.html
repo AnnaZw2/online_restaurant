@@ -9,4 +9,7 @@
     </select>
     <p>Filter by title</p>
     <input type="text" [(ngModel)]="filterByTitle" (input)="applyFilters()">
+
+    <p>Show only with likes</p>
+    <input type="checkbox" (change)="toggleShowOnlyWithLikes($event)">
 </div>

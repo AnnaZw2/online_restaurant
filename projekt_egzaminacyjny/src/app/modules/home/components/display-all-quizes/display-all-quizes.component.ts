@@ -22,6 +22,8 @@ export class DisplayAllQuizesComponent implements OnInit {
 //filter
   selectedCategory: CategoryEnum | null |string = null
   filterByTitle = '';
+  showOnlyWithLikes = false;
+
   constructor(private quizService: QuizService,private userService: UserService, private router: Router) {}
  
 
@@ -41,7 +43,7 @@ export class DisplayAllQuizesComponent implements OnInit {
     let quizzesToDisplay = this.quizzes; // By default, display all quizzes
     
     // Check if filters are applied
-    if (this.selectedCategory !== null || this.filterByTitle.trim() !== '') {
+    if (this.selectedCategory !== null || this.filterByTitle || this.showOnlyWithLikes) {
       quizzesToDisplay = this.filteredQuizzes; // If filters are applied, display filtered quizzes
     }
     const startIndex = (this.currentPage - 1) * this.pageSize;
@@ -73,22 +75,28 @@ export class DisplayAllQuizesComponent implements OnInit {
     const { category, title } = filterCriteria;
     this.selectedCategory = category;
     this.filterByTitle = title;
+    this.showOnlyWithLikes = filterCriteria.showOnlyWithLikes;
 
     // Apply filters here
     this.filteredQuizzes = this.quizzes.filter((quiz) => {
       // Implement filtering logic based on filter criteria
       let categoryMatch = true;
       let titleMatch = true;
+      let likesMatch = true;
 
       if (this.selectedCategory && this.selectedCategory !== 'all') {
         categoryMatch = quiz.category === this.selectedCategory;
       }
 
-      if (this.filterByTitle.trim() !== '') {
+      if (this.filterByTitle && this.filterByTitle.trim() !== '') {
         titleMatch = quiz.title.toLowerCase().includes(this.filterByTitle.toLowerCase());
       }
 
-      return categoryMatch && titleMatch;
+      if (this.showOnlyWithLikes) {
+        likesMatch = quiz.likes > 0;
+        console.log("likesMatch",likesMatch)
+      }
+      return categoryMatch && titleMatch && likesMatch;
     });
 
     this.totalQuizzes = this.filteredQuizzes.length; // Update totalQuizzes with the length of filtered quizzes

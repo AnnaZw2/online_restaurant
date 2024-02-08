@@ -10,6 +10,7 @@ import { CategoryEnum } from 'src/app/features/dto/category.enum';
 export class ControlsPanelComponent {
   filterByCategory: CategoryEnum | null = null;
   filterByTitle: string | null = null;
+  showOnlyWithLikes = false;
   categoryOptions: CategoryEnum[] = Object.values(CategoryEnum);
   @Output() filtersApplied: EventEmitter<any> = new EventEmitter<any>();
   @Output() filtersCleared: EventEmitter<void> = new EventEmitter<void>();
@@ -22,10 +23,16 @@ export class ControlsPanelComponent {
     this.filtersApplied.emit({
       category: this.filterByCategory,
       title: this.filterByTitle,
+      showOnlyWithLikes: this.showOnlyWithLikes,
     });
-    console.log("emitted",this.filterByCategory)
+    console.log("emitted",this.showOnlyWithLikes)
   }
+  toggleShowOnlyWithLikes(event: any) {
 
+    this.showOnlyWithLikes = event.target?.checked || false;
+    console.log("showOnlyWithLikes",this.showOnlyWithLikes)
+    this.applyFilters(); // Apply filters immediately when the checkbox state changes
+  }
    navigateToCreateQuiz() {
     this.router.navigate(['/create-quiz']);
 }
