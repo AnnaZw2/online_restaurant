@@ -15,15 +15,16 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./create-quiz-form.component.scss'],
 })
 export class CreateQuizFormComponent implements OnInit {
-  existingQuiz: CreateQuizDto | null = null;
-  quizForm!: FormGroup;
-  categories = Object.values(CategoryEnum);
-  showDropdown = false;
-  selectedCategory = '';
-  submitted = false;
-  currentUser = this.userService.getCurrentUser();
-  quizId = '';
-  showModal = false;
+  public existingQuiz: CreateQuizDto | null = null;
+  public quizForm!: FormGroup;
+  public categories: string[] = Object.values(CategoryEnum);
+  public showDropdown: boolean = false;
+  public selectedCategory: string = '';
+  public submitted: boolean = false;
+  public currentUser: { username: string; email: string } | null =
+    this.userService.getCurrentUser();
+  public quizId: string = '';
+  public showModal: boolean = false;
 
   isEdit = false;
   constructor(
@@ -33,12 +34,11 @@ export class CreateQuizFormComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router
   ) {}
-  ngOnInit() {
+  public ngOnInit() {
     this.activatedRoute.params.subscribe((params) => {
       this.isEdit = this.activatedRoute.snapshot.queryParams['edit'] === 'true';
       if (this.isEdit) {
         this.quizId = params['quizId'];
-        console.log('id', this.quizId);
         // Fetch quiz data by quizId
         this.quizService.getOne(this.quizId).subscribe(
           (data) => {
@@ -47,6 +47,7 @@ export class CreateQuizFormComponent implements OnInit {
             this.initializeForm();
           },
           (error) => {
+            // eslint-disable-next-line no-console
             console.error('Error fetching quiz:', error);
           }
         );
@@ -54,11 +55,9 @@ export class CreateQuizFormComponent implements OnInit {
         this.quizService.getOne(this.quizId).subscribe(
           (data) => {
             this.existingQuiz = data;
-            console.log(data);
-
-            console.log('qustions', this.questions);
           },
           (error) => {
+            // eslint-disable-next-line no-console
             console.error('Error fetching quiz:', error);
           }
         );
@@ -67,7 +66,7 @@ export class CreateQuizFormComponent implements OnInit {
     });
   }
 
-  initializeForm() {
+  public initializeForm(): void {
     if (this.existingQuiz) {
       this.quizForm = this.formBuilder.group({
         title: [
@@ -97,7 +96,7 @@ export class CreateQuizFormComponent implements OnInit {
     }
   }
 
-  mapQuestions(questions: CreateQuestionDto[]) {
+  public mapQuestions(questions: CreateQuestionDto[]) {
     return questions.map((question) => {
       return this.formBuilder.group({
         question: [
@@ -169,9 +168,8 @@ export class CreateQuizFormComponent implements OnInit {
           }),
           finalize(() => {
             console.log('Quiz creation request completed.');
-            if(this.existingQuiz!==null){
+            if (this.existingQuiz !== null) {
               this.router.navigate(['/home']);
-
             }
           })
         )
@@ -179,7 +177,6 @@ export class CreateQuizFormComponent implements OnInit {
 
       if (this.existingQuiz) {
         this.quizService.remove(this.quizId).subscribe();
-        
       }
     } else {
       console.log('Form is invalid');
