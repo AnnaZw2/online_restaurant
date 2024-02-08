@@ -26,4 +26,11 @@ export class QuizService {
     console.log("quizservice",quiz);
     return this.http.post<CreateQuizDto>(this.quiz_api_url, quiz);
   }
+
+  update(id: string, quiz: CreateQuizDto): Observable<CreateQuizDto> {
+    return this.http.patch<CreateQuizDto>(`${this.quiz_api_url}/${id}`, quiz);
+  }
+  remove(id: string): Observable<QuizDto> {
+    return this.http.delete<QuizDto>(`${this.quiz_api_url}/${id}`);
+  }
 }

@@ -1,5 +1,5 @@
-import { ChangeDetectorRef, Component,  OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 import { CreateQuestionDto } from 'src/app/features/dto/create-question.dto';
 import { QuizDto } from 'src/app/features/dto/quiz.dto';
 import { QuizService } from 'src/app/features/services/quiz/quiz.service';
@@ -12,7 +12,8 @@ import { QuizService } from 'src/app/features/services/quiz/quiz.service';
 export class QuizComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
- private quizService: QuizService,
+    private quizService: QuizService,
+    private router: Router,
     private cdr: ChangeDetectorRef
   ) {}
   quizId = '';
@@ -26,7 +27,7 @@ export class QuizComponent implements OnInit {
       this.quiz = data;
       console.log(data);
       this.questions = this.shuffleAnswers(data.questions);
-      console.log("qustions",this.questions);
+      console.log("qustions", this.questions);
     });
   }
 
@@ -57,9 +58,29 @@ export class QuizComponent implements OnInit {
     this.submitted = true;
     this.cdr.detectChanges();
   }
+
   retryQuiz(): void {
     this.submitted = false;
     this.questions = this.shuffleAnswers(this.quiz?.questions || []);
     this.cdr.detectChanges();
+  }
+
+  editQuiz(): void {
+    if (this.quiz) {
+      
+      const navigationExtras: NavigationExtras = {
+        queryParams: { edit: 'true' },
+        queryParamsHandling: 'merge'
+      };
+      this.router.navigate(['/create-quiz',this.quizId], navigationExtras);
+    }
+  }
+
+  deleteQuiz(): void {
+    if (this.quiz) {
+      this.quizService.remove(this.quiz.id).subscribe(() => {
+        this.router.navigate(['/home']);
+      });
+    }
   }
 }

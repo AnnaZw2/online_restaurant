@@ -2,6 +2,7 @@ import { PartialType } from '@nestjs/mapped-types';
 import { CreateQuizDto } from './create-quiz.dto';
 import { ApiProperty } from '@nestjs/swagger';
 import { QuizCategory } from '../entities/category.enum';
+import { CreateQuestionDto } from './create-question.dto';
 
 export class UpdateQuizDto extends PartialType(CreateQuizDto) {
   @ApiProperty({
@@ -34,4 +35,12 @@ export class UpdateQuizDto extends PartialType(CreateQuizDto) {
     example: QuizCategory.Science,
   })
   category: QuizCategory;
+
+  @ApiProperty({
+    type: [CreateQuestionDto], // Assuming QuestionDto is a DTO for questions
+    description: 'Updated questions for the quiz',
+    required: false,
+  })
+  questionIds?: number[];
+  questions?: CreateQuestionDto[];
 }

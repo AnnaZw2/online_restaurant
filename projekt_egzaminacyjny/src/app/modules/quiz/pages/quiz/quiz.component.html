@@ -2,6 +2,8 @@
   <app-header></app-header>
   <div class="wrapper">
     <h1>{{ quiz?.title }}</h1>
+    <button pButton type="button" class="p-button p-mt-2 edit" (click)="editQuiz()">Edit Quiz</button>
+    <button pButton type="button" class="p-button p-mt-2 delete" (click)="deleteQuiz()">Delete Quiz</button>
     <div *ngFor="let question of questions" class="wrapper-content">
       <app-quiz-question-container
         [question]="question"

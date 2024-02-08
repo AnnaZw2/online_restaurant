@@ -4,9 +4,9 @@ export interface CreateQuizDto {
   readonly title: string;
   readonly description: string;
   readonly category: CategoryEnum; 
-  readonly authorUsername: string;
-  readonly authorEmail: string;
-  readonly quizCreationDate: Date;
+  readonly authorUsername?: string;
+  readonly authorEmail?: string;
+  readonly quizCreationDate?: Date;
   readonly likes: number;
   readonly creationDate: Date;
   readonly questions: CreateQuestionDto[];

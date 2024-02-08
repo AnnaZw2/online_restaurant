@@ -48,13 +48,58 @@ export class QuizService {
       throw error;
     }
   }
+  async update(id: number, updateQuizDto: UpdateQuizDto): Promise<Quiz> {
+    // Use query builder to load the quiz entity with its related questions
+    const quiz = await this.quizRepository
+      .createQueryBuilder('quiz')
+      .leftJoinAndSelect('quiz.questions', 'questions')
+      .where('quiz.id = :id', { id })
+      .getOne();
 
-  update(id: number, updateQuizDto: UpdateQuizDto) {
-    return this.quizRepository.update(id, updateQuizDto);
+    if (!quiz) {
+      throw new NotFoundException(`Quiz with ID ${id} not found`);
+    }
+
+    // Update properties of the quiz entity if they exist in the updateQuizDto
+    if (updateQuizDto.title) {
+      quiz.title = updateQuizDto.title;
+    }
+    if (updateQuizDto.description) {
+      quiz.description = updateQuizDto.description;
+    }
+    if (updateQuizDto.likes !== undefined) {
+      quiz.likes = updateQuizDto.likes;
+    }
+    if (updateQuizDto.category) {
+      quiz.category = updateQuizDto.category;
+    }
+
+    // Save the updated quiz entity
+    const updatedQuiz = await this.quizRepository.save(quiz);
+
+    return updatedQuiz;
   }
 
-  remove(id: number) {
-    return this.quizRepository.delete(id);
+  async remove(id: number) {
+    // Find the quiz
+    const quiz = await this.quizRepository.findOne({
+      where: { id },
+      relations: ['questions'],
+    });
+
+    if (!quiz) {
+      throw new NotFoundException(`Quiz with ID ${id} not found`);
+    }
+
+    // Delete associated questions
+    await Promise.all(
+      quiz.questions.map(async (question) => {
+        await this.questionRepository.delete(question.id);
+      }),
+    );
+
+    // Delete the quiz
+    await this.quizRepository.delete(id);
   }
 
   async getAllQuestionsAndAnswers(quizId: number) {

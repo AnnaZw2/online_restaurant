@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS quiz (
     creationDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     authorId INT,
   category ENUM('Languages', 'Biology', 'Chemistry','Science', 'Art', 'Geography', 'Informatics', 'Politics','History', 'Other'),
-    FOREIGN KEY (authorId) REFERENCES user(id)
+    FOREIGN KEY (authorId) REFERENCES user(id) ON DELETE CASCADE;
 );
 
 
@@ -41,9 +41,10 @@ CREATE TABLE IF NOT EXISTS question (
     option1 VARCHAR(255) NOT NULL,
     option2 VARCHAR(255) NOT NULL,
     option3 VARCHAR(255) NOT NULL,
-    FOREIGN KEY (quizId) REFERENCES quiz(id)
+    FOREIGN KEY (quizId) REFERENCES quiz(id) ON DELETE CASCADE
+  
 );
-
+SET FOREIGN_KEY_CHECKS=0;
 -- Insert data into the quizzes and questions tables with different dates
 INSERT INTO quiz (title, description, likes, creationDate, authorId, category)
 VALUES
