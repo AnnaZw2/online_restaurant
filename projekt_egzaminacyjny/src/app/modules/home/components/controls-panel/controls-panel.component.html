@@ -12,4 +12,13 @@
 
     <p>Show only with likes</p>
      <input type="checkbox" (change)="toggleShowOnlyWithLikes($event)">
+
+     <div class="sorting-dropdown">
+        <button class="sort-button">Sort by:</button>
+        <select [(ngModel)]="sortBy" (change)="applyFilters()">
+            <option value="default">Default</option>
+            <option value="most-likes">Most Likes</option>
+            <option value="name">Name</option>
+            <option value="date">Date</option>
+        </select>
 </div>

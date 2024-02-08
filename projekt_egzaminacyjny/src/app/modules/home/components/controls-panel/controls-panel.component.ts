@@ -11,6 +11,7 @@ export class ControlsPanelComponent {
   filterByCategory: CategoryEnum | null = null;
   filterByTitle: string | null = null;
   showOnlyWithLikes = false;
+  sortBy = 'default';
   categoryOptions: CategoryEnum[] = Object.values(CategoryEnum);
   @Output() filtersApplied: EventEmitter<any> = new EventEmitter<any>();
   @Output() filtersCleared: EventEmitter<void> = new EventEmitter<void>();
@@ -24,8 +25,9 @@ export class ControlsPanelComponent {
       category: this.filterByCategory,
       title: this.filterByTitle,
       showOnlyWithLikes: this.showOnlyWithLikes,
+      sortBy: this.sortBy,
     });
-    console.log("emitted",this.showOnlyWithLikes)
+console.log("sort!!!!!!")
   }
   toggleShowOnlyWithLikes(event: any) {
 
