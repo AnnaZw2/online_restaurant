@@ -11,7 +11,6 @@ import { CreateQuizFormComponent } from './components/create-quiz-form/create-qu
 import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
 import { FeaturesModule } from 'src/app/features/features.module';
-import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
 import  { DialogModule } from 'primeng/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';

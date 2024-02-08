@@ -1,5 +1,8 @@
 <!-- eslint-disable @angular-eslint/template/elements-content -->
+<div class="form-container">
+<button type="button" pButton label="Back to Quiz" icon="pi pi-arrow-left" class="go-back" (click)="goBackToQuiz()"></button>
 <form [formGroup]="quizForm" (ngSubmit)="onSubmit()" (ngSubmit)="submitted = true">
+
     <label>
         Title:
         <input type="text" formControlName="title" pInputText>
@@ -94,11 +97,14 @@
 
 
 
-    <p-dialog header="Edit Quiz" [(visible)]="showModal" [modal]="true" [closable]="false" [responsive]="true" [style]="{width: '50vw'}">
+    <p-dialog *ngIf="isEdit" header="Edit Quiz" [(visible)]="showModal" [modal]="true" [closable]="false" [responsive]="true" [style]="{width: '50vw'}">
         <p>Are you sure you want to edit this quiz?</p>
         <p-footer>
           <button pButton type="button" label="No" (click)="showModal = false" class="p-button-text"></button>
           <button pButton type="button" label="Yes" (click)="redirectToHome()" class="p-button-danger"></button>
         </p-footer>
-      </p-dialog>
+    </p-dialog>
+    
 </form>
+
+</div>

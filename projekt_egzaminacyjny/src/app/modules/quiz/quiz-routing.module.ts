@@ -6,6 +6,7 @@ import { CreateQuizComponent } from './pages/create-quiz/create-quiz.component';
 
 const quizRoutes: Routes = [
   { path: 'quiz/:id', component: QuizComponent },
+  { path: 'create-quiz', component: CreateQuizComponent },
   { path: 'create-quiz/:quizId', component: CreateQuizComponent }
 
 ];

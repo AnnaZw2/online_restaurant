@@ -6,7 +6,7 @@ import { CreateQuizDto } from 'src/app/features/dto/create-quiz.dto';
 import { QuizService } from 'src/app/features/services/quiz/quiz.service';
 import { UserService } from 'src/app/features/services/user/user.service';
 import { notEmptyStringValidator } from 'src/app/shared/validators/not-empty-string-validator';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-quiz-form',
@@ -24,14 +24,15 @@ export class CreateQuizFormComponent implements OnInit {
   quizId = '';
   showModal = false;
 
-  
-  constructor(private formBuilder: FormBuilder, private userService: UserService, private quizService: QuizService,    private activatedRoute: ActivatedRoute) { }
+  isEdit = false;
+  constructor(private formBuilder: FormBuilder, private userService: UserService, private quizService: QuizService,    private activatedRoute: ActivatedRoute,private router: Router) { }
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {
-      this.quizId = params['quizId'];
-      console.log("id",this.quizId)
-      const isEdit = this.activatedRoute.snapshot.queryParams['edit'] === 'true';
-      if (isEdit) {
+     
+      this.isEdit = this.activatedRoute.snapshot.queryParams['edit'] === 'true';
+      if (this.isEdit) {
+        this.quizId = params['quizId'];
+        console.log("id",this.quizId)
         // Fetch quiz data by quizId
         this.quizService.getOne(this.quizId).subscribe((data) => {
           this.existingQuiz = data;
@@ -151,7 +152,9 @@ export class CreateQuizFormComponent implements OnInit {
   
   }
 
-
+  goBackToQuiz() {
+    this.router.navigate(['/quiz', this.quizId]);
+  }
 
   selectCategory(category: string) {
     this.selectedCategory = category;
