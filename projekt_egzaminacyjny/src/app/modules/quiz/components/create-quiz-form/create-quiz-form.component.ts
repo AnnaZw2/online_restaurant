@@ -136,7 +136,13 @@ export class CreateQuizFormComponent implements OnInit {
         .subscribe();
 
         if(this.existingQuiz) {
-          this.quizService.remove(this.quizId).subscribe();
+          this.quizService.remove(this.quizId).subscribe(
+          
+            (error) => {
+              console.error('Error occurred while removing quiz:', error);
+          
+            }
+          );
         }
     } else {
       console.log('Form is invalid');
