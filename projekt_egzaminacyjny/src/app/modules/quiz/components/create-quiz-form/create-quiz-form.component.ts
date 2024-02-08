@@ -168,6 +168,7 @@ export class CreateQuizFormComponent implements OnInit {
           }),
           finalize(() => {
             console.log('Quiz creation request completed.');
+            this.router.navigate(['/home']);
           })
         )
         .subscribe();
