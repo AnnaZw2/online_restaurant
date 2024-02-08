@@ -22,6 +22,7 @@ export class QuizComponent implements OnInit {
   submitted = false;
 
   displayModal = false;
+ 
   ngOnInit(): void {
     this.quizId = this.activatedRoute.snapshot.params['id'];
     this.quizService.getOne(this.quizId).subscribe((data) => {
@@ -67,6 +68,7 @@ export class QuizComponent implements OnInit {
   }
 
   editQuiz(): void {
+   
     if (this.quiz) {
       
       const navigationExtras: NavigationExtras = {

@@ -22,6 +22,9 @@ export class CreateQuizFormComponent implements OnInit {
   submitted = false;
   currentUser = this.userService.getCurrentUser();
   quizId = '';
+  showModal = false;
+
+  
   constructor(private formBuilder: FormBuilder, private userService: UserService, private quizService: QuizService,    private activatedRoute: ActivatedRoute) { }
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {
@@ -100,6 +103,7 @@ export class CreateQuizFormComponent implements OnInit {
     this.questions.push(this.createQuestionFormGroup());
   }
 
+
   onSubmit() {
     this.submitted = true;
     if (this.quizForm.valid && this.currentUser) {
@@ -141,6 +145,13 @@ export class CreateQuizFormComponent implements OnInit {
   toggleDropdown() {
     this.showDropdown = !this.showDropdown;
   }
+
+  redirectToHome() {
+    this.userService.navigateToHome();
+  
+  }
+
+
 
   selectCategory(category: string) {
     this.selectedCategory = category;

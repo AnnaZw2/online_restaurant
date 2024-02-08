@@ -90,5 +90,15 @@
     </div>
     <button type="button" (click)="addQuestion()" pButton icon="pi pi-plus" label="Add New Question"></button>
     <br>
-    <button type="submit" pButton label="Submit" icon="pi pi-check"  class="submit-button"></button>
+    <button type="submit" pButton label="Submit" icon="pi pi-check"  class="submit-button" (click)="showModal = true"></button>
+
+
+
+    <p-dialog header="Edit Quiz" [(visible)]="showModal" [modal]="true" [closable]="false" [responsive]="true" [style]="{width: '50vw'}">
+        <p>Are you sure you want to edit this quiz?</p>
+        <p-footer>
+          <button pButton type="button" label="No" (click)="showModal = false" class="p-button-text"></button>
+          <button pButton type="button" label="Yes" (click)="redirectToHome()" class="p-button-danger"></button>
+        </p-footer>
+      </p-dialog>
 </form>
