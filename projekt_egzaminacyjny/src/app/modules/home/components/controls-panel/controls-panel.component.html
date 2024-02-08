@@ -7,4 +7,6 @@
         <option value="all">All</option> 
       <option *ngFor="let category of categoryOptions" [value]="category">{{ category }}</option>
     </select>
+    <p>Filter by title</p>
+    <input type="text" [(ngModel)]="filterByTitle" (input)="applyFilters()">
 </div>

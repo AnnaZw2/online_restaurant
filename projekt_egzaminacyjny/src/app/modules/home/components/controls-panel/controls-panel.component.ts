@@ -9,6 +9,7 @@ import { CategoryEnum } from 'src/app/features/dto/category.enum';
 })
 export class ControlsPanelComponent {
   filterByCategory: CategoryEnum | null = null;
+  filterByTitle: string | null = null;
   categoryOptions: CategoryEnum[] = Object.values(CategoryEnum);
   @Output() filtersApplied: EventEmitter<any> = new EventEmitter<any>();
   @Output() filtersCleared: EventEmitter<void> = new EventEmitter<void>();
@@ -19,7 +20,8 @@ export class ControlsPanelComponent {
    }
    applyFilters() {
     this.filtersApplied.emit({
-      category: this.filterByCategory
+      category: this.filterByCategory,
+      title: this.filterByTitle,
     });
     console.log("emitted",this.filterByCategory)
   }

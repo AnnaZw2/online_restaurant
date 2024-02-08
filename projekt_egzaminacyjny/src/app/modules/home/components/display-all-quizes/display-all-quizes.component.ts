@@ -11,6 +11,7 @@ import { CategoryEnum } from 'src/app/features/dto/category.enum';
   styleUrls: ['./display-all-quizes.component.scss'],
 })
 export class DisplayAllQuizesComponent implements OnInit {
+  //pagination
   quizzes: QuizDto[] = [];
   filteredQuizzes: QuizDto[] = [];
   currentPage = 1;
@@ -18,7 +19,9 @@ export class DisplayAllQuizesComponent implements OnInit {
   totalQuizzes = 0;
   first = this.currentPage * this.pageSize - this.pageSize
 
+//filter
   selectedCategory: CategoryEnum | null |string = null
+  filterByTitle = '';
   constructor(private quizService: QuizService,private userService: UserService, private router: Router) {}
  
 
@@ -38,10 +41,9 @@ export class DisplayAllQuizesComponent implements OnInit {
     let quizzesToDisplay = this.quizzes; // By default, display all quizzes
     
     // Check if filters are applied
-    if (this.selectedCategory !== null) {
+    if (this.selectedCategory !== null || this.filterByTitle.trim() !== '') {
       quizzesToDisplay = this.filteredQuizzes; // If filters are applied, display filtered quizzes
     }
-    
     const startIndex = (this.currentPage - 1) * this.pageSize;
     const endIndex = Math.min(startIndex + this.pageSize, quizzesToDisplay.length);
     return quizzesToDisplay.slice(startIndex, endIndex); // Use filtered quizzes for pagination if filters are applied
@@ -68,23 +70,29 @@ export class DisplayAllQuizesComponent implements OnInit {
   }
    
   applyFilters(filterCriteria: any) {
-    const { category } = filterCriteria;
+    const { category, title } = filterCriteria;
     this.selectedCategory = category;
+    this.filterByTitle = title;
+
     // Apply filters here
     this.filteredQuizzes = this.quizzes.filter((quiz) => {
       // Implement filtering logic based on filter criteria
-      if(this.selectedCategory=="all") {
-        this.selectedCategory
+      let categoryMatch = true;
+      let titleMatch = true;
+
+      if (this.selectedCategory && this.selectedCategory !== 'all') {
+        categoryMatch = quiz.category === this.selectedCategory;
       }
-     else if (this.selectedCategory) {
-        return quiz.category === this.selectedCategory;
+
+      if (this.filterByTitle.trim() !== '') {
+        titleMatch = quiz.title.toLowerCase().includes(this.filterByTitle.toLowerCase());
       }
-      return true; // Return true if no filters are applied
+
+      return categoryMatch && titleMatch;
     });
-    console.log("filteredQuizzes",this.filteredQuizzes)
+
     this.totalQuizzes = this.filteredQuizzes.length; // Update totalQuizzes with the length of filtered quizzes
-    // Reset currentPage when filters are applied
-    this.currentPage = 1;
+    this.currentPage = 1; // Reset currentPage when filters are applied
     this.first = 0;
   }
 }
